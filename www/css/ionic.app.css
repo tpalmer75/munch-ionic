@@ -7675,5 +7675,5 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.bar.bar-stable {
-  background: black !important; }
+.has-tabs-top.pane {
+  top: 93px; }
