@@ -20,3 +20,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+//Include Robotodraft
+$RobotoDraftFontPath: "../www/lib/robotodraft/fonts";
+$RobotoDraftFontName: "RobotoDraft";
+$RobotoDraftFontVersion: "1.0.0";
+
+@import "../www/lib/robotodraft/sass/robotodraft.scss";
+
+
+
+.has-tabs-top.pane {
+	top: 93px;
+}
+
