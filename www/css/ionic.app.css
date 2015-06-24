@@ -7674,6 +7674,3 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
-
-.has-tabs-top.pane {
-  top: 93px; }
