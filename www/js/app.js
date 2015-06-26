@@ -18,6 +18,14 @@ var myApp = angular.module('starter', ['ionic', 'ionic-material'])
   });
 })
 
+// Trying to fix slow scrolling
 myApp.config(function($ionicConfigProvider) {
   // $ionicConfigProvider.scrolling.jsScrolling(false);
 });
+
+// Customize status bar
+myapp.run(function($cordovaStatusbar) {
+  $cordovaStatusbar.overlaysWebView(true)
+
+  $cordovaStatusbar.styleHex('#679330') //red
+})
