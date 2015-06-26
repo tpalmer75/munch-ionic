@@ -9801,3 +9801,6 @@ a {
 
 .tabs-striped .tabs {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25); }
+
+.title-left, .title.title-left {
+  left: 5px; }
