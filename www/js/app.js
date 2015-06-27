@@ -24,7 +24,7 @@ myApp.config(function($ionicConfigProvider) {
 });
 
 // Customize status bar
-myapp.run(function($cordovaStatusbar) {
+//myApp.run(function($cordovaStatusbar) {
   //$cordovaStatusbar.overlaysWebView(true)
-  $cordovaStatusbar.styleHex('#679330');
-});
+  //$cordovaStatusbar.styleHex('#679330');
+//});

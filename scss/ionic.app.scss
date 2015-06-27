@@ -30,8 +30,19 @@ $RobotoDraftFontVersion: "1.0.0";
 
 @import "../www/lib/robotodraft/sass/robotodraft.scss";
 
+
+.bar {
+	&.bar-header {
+		height: 56px;
+	}
+	.title {
+		line-height: 56px;
+		margin: 0 15px
+	}
+}
+
 .has-tabs-top.pane {
-	top: 93px;
+	top: 110px;
 }
 
 .tabs-striped .tabs {
@@ -40,4 +51,13 @@ $RobotoDraftFontVersion: "1.0.0";
 
 .title-left, .title.title-left {
 	left: 5px;
+	font-size: 20px;
+}
+
+.tab-item {
+	font-weight: 500;
+}
+
+.tabs-top > .tabs, .tabs.tabs-top {
+	top: 56px;
 }
