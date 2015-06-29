@@ -9815,5 +9815,9 @@ a {
 .tab-item {
   font-weight: 500; }
 
-.tabs-top > .tabs, .tabs.tabs-top {
+.tabs-bottom > .tabs {
+  bottom: 0 !important; }
+.tabs-top > .tabs {
+  top: 56px; }
+.tabs.tabs-top {
   top: 56px; }

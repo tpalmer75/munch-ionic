@@ -25,10 +25,7 @@
   <body ng-app="starter">
 
     <ion-pane>
-      <div class="bar bar-header has-tabs-top bar-balanced">
-        <div class="h1 title title-left">Schedule</div>
-      </div>
-      <!-- <div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
+      <div class="tabs-background-light tabs-bottom tabs-color-balanced">
         <div class="tabs">
           <a class="tab-item active" href="#">
             <i class="icon ion-home"></i>
@@ -43,12 +40,14 @@
             Settings
           </a>
         </div>
-      </div> -->
-      
+      </div>
+      <div class="bar bar-header has-tabs-top bar-balanced">
+        <div class="h1 title title-left">Schedule</div>
+      </div>
       <ion-tabs class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
 
         <ion-tab title="BREAKFAST">
-          <ion-content class="has-header has-tabs">
+          <ion-content class="has-header has-tabs-top">
         <ul class="list">
 
         <li class="item">
@@ -95,6 +94,7 @@
         </ion-tab>
 
         <ion-tab title="LUNCH">
+        <ion-content class="has-header has-tabs-top">
           <ul class="list">
 
         <li class="item">
@@ -136,9 +136,10 @@
         <li class="item">
           Lunch Item 13
         </li>
-      </ul>        </ion-tab>
+      </ul>        </ion-content></ion-tab>
 
         <ion-tab title="DINNER">
+        <ion-content class="has-header has-tabs-top">
           <ul class="list">
 
         <li class="item">
@@ -181,6 +182,7 @@
           Dinner Item 13
         </li>
       </ul>  
+      </ion-content>
         </ion-tab>
 
       </ion-tabs>

@@ -58,6 +58,14 @@ $RobotoDraftFontVersion: "1.0.0";
 	font-weight: 500;
 }
 
-.tabs-top > .tabs, .tabs.tabs-top {
-	top: 56px;
+.tabs {
+	&-bottom > .tabs {
+		bottom: 0 !important;
+	}
+	&-top > .tabs {
+		top: 56px;
+	}
+	&.tabs-top {
+		top: 56px;
+	}
 }

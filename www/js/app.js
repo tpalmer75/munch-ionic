@@ -28,3 +28,9 @@ myApp.config(function($ionicConfigProvider) {
   //$cordovaStatusbar.overlaysWebView(true)
   //$cordovaStatusbar.styleHex('#679330');
 //});
+
+// myApp.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+//     $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+// }]);
