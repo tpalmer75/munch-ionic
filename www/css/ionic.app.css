@@ -9801,16 +9801,15 @@ a {
 .bar .title {
   line-height: 56px;
   margin: 0 15px; }
+  .bar .title.title-left {
+    left: 5px;
+    font-size: 20px !important; }
 
 .has-tabs-top.pane {
   top: 110px; }
 
 .tabs-striped .tabs {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25); }
-
-.title-left, .title.title-left {
-  left: 5px;
-  font-size: 20px; }
 
 .tab-item {
   font-weight: 500; }

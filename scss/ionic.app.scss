@@ -37,7 +37,11 @@ $RobotoDraftFontVersion: "1.0.0";
 	}
 	.title {
 		line-height: 56px;
-		margin: 0 15px
+		margin: 0 15px;
+		&.title-left {
+			left: 5px;
+			font-size: 20px !important;
+		}
 	}
 }
 
@@ -47,11 +51,6 @@ $RobotoDraftFontVersion: "1.0.0";
 
 .tabs-striped .tabs {
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,.25);
-}
-
-.title-left, .title.title-left {
-	left: 5px;
-	font-size: 20px;
 }
 
 .tab-item {
