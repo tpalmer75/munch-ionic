@@ -9820,3 +9820,9 @@ a {
   top: 56px; }
 .tabs.tabs-top {
   top: 56px; }
+.tabs .mdi {
+  font-size: 24px; }
+.tabs .tab-item {
+  color: #757575; }
+  .tabs .tab-item.active {
+    color: #8BC34A; }

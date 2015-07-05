@@ -10,6 +10,7 @@
 
     <!-- compiled css output -->
     <link href="css/ionic.app.css" rel="stylesheet">
+    <link href="lib/mdi/css/materialdesignicons.min.css" rel="stylesheet">
     
 
     <!-- ionic/angularjs js -->
@@ -28,22 +29,26 @@
     <ion-pane>
       <div class="tabs-background-light tabs-bottom tabs-color-balanced">
         <div class="tabs">
-          <a class="tab-item active" href="#">
-            <i class="icon ion-home"></i>
-            Test
+          <a class="tab-item" href="#">
+            <i class="mdi mdi-silverware-variant"></i>
+          </a>
+          <a class="tab-item  active" href="#">
+            <i class="mdi mdi-calendar-text"></i>
           </a>
           <a class="tab-item" href="#">
-            <i class="icon ion-star"></i>
-            Favorites
-          </a>
-          <a class="tab-item" href="#">
-            <i class="icon ion-gear-a"></i>
-            Settings
+            <i class="mdi mdi-shopping"></i>
           </a>
         </div>
       </div>
       <div class="bar bar-header has-tabs-top bar-balanced">
         <div class="h1 title title-left">Schedule</div>
+        <div class="buttons buttons-right header-item">
+          <span class="right-buttons">
+            <button class="button button-icon button-clear mdi mdi-dice-3">
+            <button class="button button-icon button-clear ion-android-more-vertical">
+            </button>
+          </span>
+        </div>
       </div>
       <ion-tabs class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
 

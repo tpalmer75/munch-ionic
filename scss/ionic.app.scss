@@ -67,4 +67,13 @@ $RobotoDraftFontVersion: "1.0.0";
 	&.tabs-top {
 		top: 56px;
 	}
+	.mdi {
+		font-size: 24px;
+	}
+	.tab-item {
+		color: #757575;
+		&.active {
+			color: $balanced;
+		}
+	}
 }
