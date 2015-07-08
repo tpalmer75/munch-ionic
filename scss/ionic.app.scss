@@ -24,29 +24,33 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "../www/lib/ionic-material/src/scss/index.scss";
 
 //Include Robotodraft
-$RobotoDraftFontPath: "../www/lib/robotodraft/fonts";
-$RobotoDraftFontName: "RobotoDraft";
-$RobotoDraftFontVersion: "1.0.0";
+// $RobotoDraftFontPath: "../www/lib/robotodraft/fonts";
+// $RobotoDraftFontName: "RobotoDraft";
+// $RobotoDraftFontVersion: "1.0.0";
 
-@import "../www/lib/robotodraft/sass/robotodraft.scss";
+// @import "../www/lib/robotodraft/sass/robotodraft.scss";
 
 
 .bar {
 	&.bar-header {
 		height: 56px;
-	}
-	.title {
-		line-height: 56px;
-		margin: 0 15px;
-		&.title-left {
-			left: 5px;
-			font-size: 20px !important;
+		&.no-shadow {
+			box-shadow: none;
 		}
+	}
+	&.bar-header .title.title-left {
+		left: 10px;
+		top: 3px;
+		font-size: 20px;
 	}
 }
 
 .has-tabs-top.pane {
 	top: 110px;
+}
+
+.has-header{
+	top: 55px;
 }
 
 .tabs-striped .tabs {
@@ -58,9 +62,6 @@ $RobotoDraftFontVersion: "1.0.0";
 }
 
 .tabs {
-	&-bottom > .tabs {
-		bottom: 0 !important;
-	}
 	&-top > .tabs {
 		top: 56px;
 	}
@@ -76,4 +77,25 @@ $RobotoDraftFontVersion: "1.0.0";
 			color: $balanced;
 		}
 	}
+}
+
+.tabs-bottom.force-bottom > .tabs {
+  border-color: #b2b2b2;
+  border-width: 0;
+  background-color: #f8f8f8;
+  color: #444;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 49px;
+  border-style: solid;
+  border-top-width: 1px;
+  background-size: 0;
+  line-height: 49px;
+  box-shadow: 0 -1px 3px rgba(0,0,0,.2);
+  > .tab-item.tab-item-active {
+  	border: none !important;
+  	margin: 0
+  }
 }

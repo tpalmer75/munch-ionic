@@ -9708,105 +9708,20 @@ a {
 .button {
   overflow: hidden !important; }
 
-/* BEGIN Thin */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Thin/RobotoDraft-Thin.ttf?v=1.0.0') format('truetype');
-  font-weight: 100;
-  font-style: normal; }
-
-/* END Thin */
-/* BEGIN Light */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Light/RobotoDraft-Light.ttf?v=1.0.0') format('truetype');
-  font-weight: 300;
-  font-style: normal; }
-
-/* END Light */
-/* BEGIN Regular */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0') format('truetype');
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Regular/RobotoDraft-Regular.ttf?v=1.0.0') format('truetype');
-  font-weight: normal;
-  font-style: normal; }
-
-/* END Regular */
-/* BEGIN Italic */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0') format('truetype');
-  font-weight: 400;
-  font-style: italic; }
-
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Italic/RobotoDraft-Italic.ttf?v=1.0.0') format('truetype');
-  font-weight: normal;
-  font-style: italic; }
-
-/* END Italic */
-/* BEGIN Medium */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Medium/RobotoDraft-Medium.ttf?v=1.0.0') format('truetype');
-  font-weight: 500;
-  font-style: normal; }
-
-/* END Medium */
-/* BEGIN Bold */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0') format('truetype');
-  font-weight: 700;
-  font-style: normal; }
-
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Bold/RobotoDraft-Bold.ttf?v=1.0.0') format('truetype');
-  font-weight: bold;
-  font-style: normal; }
-
-/* END Bold */
-/* BEGIN Bold Italic */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0') format('truetype');
-  font-weight: 700;
-  font-style: italic; }
-
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/BoldItalic/RobotoDraft-BoldItalic.ttf?v=1.0.0') format('truetype');
-  font-weight: bold;
-  font-style: italic; }
-
-/* END Bold Italic */
-/* BEGIN Black */
-@font-face {
-  font-family: RobotoDraft;
-  src: url('../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff2?v=1.0.0') format('woff2'), url('../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.woff?v=1.0.0') format('woff'), url('../www/lib/robotodraft/fonts/Black/RobotoDraft-Black.ttf?v=1.0.0') format('truetype');
-  font-weight: 900;
-  font-style: normal; }
-
-/* END Black */
 .bar.bar-header {
   height: 56px; }
-.bar .title {
-  line-height: 56px;
-  margin: 0 15px; }
-  .bar .title.title-left {
-    left: 5px;
-    font-size: 20px !important; }
+  .bar.bar-header.no-shadow {
+    box-shadow: none; }
+.bar.bar-header .title.title-left {
+  left: 10px;
+  top: 3px;
+  font-size: 20px; }
 
 .has-tabs-top.pane {
   top: 110px; }
+
+.has-header {
+  top: 55px; }
 
 .tabs-striped .tabs {
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.25); }
@@ -9814,8 +9729,6 @@ a {
 .tab-item {
   font-weight: 500; }
 
-.tabs-bottom > .tabs {
-  bottom: 0 !important; }
 .tabs-top > .tabs {
   top: 56px; }
 .tabs.tabs-top {
@@ -9826,3 +9739,22 @@ a {
   color: #757575; }
   .tabs .tab-item.active {
     color: #8BC34A; }
+
+.tabs-bottom.force-bottom > .tabs {
+  border-color: #b2b2b2;
+  border-width: 0;
+  background-color: #f8f8f8;
+  color: #444;
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  height: 49px;
+  border-style: solid;
+  border-top-width: 1px;
+  background-size: 0;
+  line-height: 49px;
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.2); }
+  .tabs-bottom.force-bottom > .tabs > .tab-item.tab-item-active {
+    border: none !important;
+    margin: 0; }

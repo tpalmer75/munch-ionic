@@ -3,36 +3,74 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var myApp = angular.module('starter', ['ionic', 'ionic-material', 'ngCordova'])
+// 'starter.services' is found in services.js
+// 'starter.controllers' is found in controllers.js
+angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-
     if (window.StatusBar) {
-      StatusBar.backgroundColorByHexString("#FF000");
+      // org.apache.cordova.statusbar required
+      StatusBar.styleLightContent();
     }
-
   });
 })
 
-// Trying to fix slow scrolling
-//myApp.config(function($ionicConfigProvider) {
-  // $ionicConfigProvider.scrolling.jsScrolling(false);
-//});
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
-// Customize status bar
-// .run(function($cordovaStatusbar) {
-//   $cordovaStatusbar.styleHex('#FF0000') //red
-// })
+  // Ionic uses AngularUI Router which uses the concept of states
+  // Learn more here: https://github.com/angular-ui/ui-router
+  // Set up the various states which the app can be in.
+  // Each state's controller can be found in controllers.js
+  $stateProvider
 
+  // setup an abstract state for the tabs directive
+    .state('tab', {
+    url: "/tab",
+    abstract: true,
+    templateUrl: "templates/tabs.html"
+  })
 
-// myApp.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+  // Each tab has its own nav history stack:
 
-//     $ionicConfigProvider.tabs.position('bottom'); // other values: top
+  .state('tab.meals', {
+    url: '/meals',
+    views: {
+      'tab-meals': {
+        templateUrl: 'templates/tab-meals.html',
+        // controller: 'DashCtrl'
+      }
+    }
+  })
 
-// }]);
+  .state('tab.schedule', {
+      url: '/schedule',
+      views: {
+        'tab-schedule': {
+          templateUrl: 'templates/tab-schedule.html',
+          //controller: 'ChatsCtrl'
+        }
+      }
+    })
+
+  .state('tab.shopping', {
+    url: '/shopping',
+    views: {
+      'tab-shopping': {
+        templateUrl: 'templates/tab-shopping.html',
+        // controller: 'AccountCtrl'
+      }
+    }
+  });
+
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/tab/meals');
+
+  $ionicConfigProvider.tabs.position("bottom");
+
+});
