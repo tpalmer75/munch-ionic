@@ -73,29 +73,33 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	}
 	.tab-item {
 		color: #757575;
+		margin-top: 1px;
 		&.active {
 			color: $balanced;
+			margin-top: 0;
+			height: 48px;
 		}
 	}
 }
 
-.tabs-bottom.force-bottom > .tabs {
-  border-color: #b2b2b2;
-  border-width: 0;
+.tabs-bottom.force-bottom > .tabs { // Forcing bottom tabs to not inherit OS style
   background-color: #f8f8f8;
-  color: #444;
-  position: absolute;
   bottom: 0;
-  z-index: 5;
-  width: 100%;
-  height: 49px;
-  border-style: solid;
-  border-top-width: 1px;
-  background-size: 0;
-  line-height: 49px;
   box-shadow: 0 -1px 3px rgba(0,0,0,.2);
-  > .tab-item.tab-item-active {
+  > .tab-item.tab-item-active, > .tab-item.activated {
   	border: none !important;
   	margin: 0
   }
+}
+
+.tabs-striped.tabs-color-light .tab-item.tab-item-active, .tabs-striped.tabs-color-light .tab-item.active, .tabs-striped.tabs-color-light .tab-item.activated {
+	border-color: #558B2F;
+}
+.tabs-top.tabs-striped .tab-item.active {
+	margin-top: 0;
+	height: 48px;
+}
+.tabs-top.tabs-striped .tab-item.activated {
+	height: 48px;
+	margin-top: 1px;
 }
