@@ -32,6 +32,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 .bar {
+	background-image: none !important;
 	&.bar-header {
 		height: 56px;
 		&.no-shadow {
@@ -45,13 +46,29 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 	}
 }
 
-.has-tabs-top.pane {
-	top: 110px;
+.has-tabs-bottom {
+	bottom: 50px;
 }
 
 .has-header{
 	top: 55px;
 }
+
+.has-header.has-tabs-top {
+	top: 110px;
+}
+
+
+
+
+
+
+/// ---------- TABS -------------
+
+
+
+
+
 
 .tabs-striped .tabs {
 	box-shadow: 0 2px 3px 0 rgba(0,0,0,.25);
@@ -102,4 +119,48 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .tabs-top.tabs-striped .tab-item.activated {
 	height: 48px;
 	margin-top: 1px;
+}
+
+
+
+
+
+
+
+// ---------- LIST ------------
+
+
+
+
+
+
+
+.list .item {
+	font-size: 16px;
+	height: 50px;
+	border-bottom: 1px solid #ECECEC;
+	padding-left: 20px;
+}
+
+
+
+
+
+
+// --------------- FAB ---------------
+
+
+
+
+
+
+.has-tabs-bottom.button.button-fab {
+	bottom: 72px;
+	.mdi {
+		font-size: 24px;
+		margin-top: 12px;
+	}
+}
+.balanced-bg, .button-balanced, .bar .button-balanced, .header-balanced, .button-bar-balanced, .bar-balanced, .balanced-border, .balanced-bg:hover, .button-balanced:hover, .bar .button-balanced:hover, .header-balanced:hover, .button-bar-balanced:hover, .bar-balanced:hover, .balanced-border:hover, .balanced-bg:active, .button-balanced:active, .bar .button-balanced:active, .header-balanced:active, .button-bar-balanced:active, .bar-balanced:active, .balanced-border:active, .balanced-bg.activated, .button-balanced.activated, .bar .button-balanced.activated, .header-balanced.activated, .button-bar-balanced.activated, .bar-balanced.activated, .balanced-border.activated {
+	background: darken($balanced, 10%);
 }
