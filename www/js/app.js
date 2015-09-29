@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -13,15 +13,17 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      cordova.plugins.Keyboard.disableScroll(true);
+
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleLightContent();
+      StatusBar.styleDarkContent();
     }
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -30,47 +32,63 @@ angular.module('starter', ['ionic', 'ionic-material', 'starter.controllers', 'st
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: "/tab",
+  .state('tab', {
+    url: '/tab',
     abstract: true,
-    templateUrl: "templates/tabs.html"
+    templateUrl: 'templates/tabs.html'
   })
 
   // Each tab has its own nav history stack:
 
   .state('tab.meals', {
-    url: '/meals',
-    views: {
-      'tab-meals': {
-        templateUrl: 'templates/tab-meals.html',
-        // controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.schedule', {
-      url: '/schedule',
+      url: '/meals',
       views: {
-        'tab-schedule': {
-          templateUrl: 'templates/tab-schedule.html',
-          //controller: 'ChatsCtrl'
+        'tab-meals': {
+          templateUrl: 'templates/tab-meals.html',
+          controller: 'MealsCtrl'
+        }
+      }
+    })
+    .state('tab.meal-detail', {
+        url: '/meals/:mealId',
+        views: {
+          'tab-meals': {
+            templateUrl: 'templates/meal-detail.html',
+            controller: 'MealDetailCtrl'
+          }
+        }
+      })
+
+  .state('tab.chats', {
+      url: '/chats',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/tab-chats.html',
+          controller: 'ChatsCtrl'
+        }
+      }
+    })
+    .state('tab.chat-detail', {
+      url: '/chats/:chatId',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl'
         }
       }
     })
 
-  .state('tab.shopping', {
-    url: '/shopping',
+  .state('tab.account', {
+    url: '/account',
     views: {
-      'tab-shopping': {
-        templateUrl: 'templates/tab-shopping.html',
-        // controller: 'AccountCtrl'
+      'tab-account': {
+        templateUrl: 'templates/tab-account.html',
+        controller: 'AccountCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/meals');
-
-  $ionicConfigProvider.tabs.position("bottom");
+  $urlRouterProvider.otherwise('/tab/account');
 
 });

@@ -1,6 +1,6 @@
 {
-  "name": "munch",
-  "app_id": "4d222296",
+  "name": "newApp",
+  "app_id": "1bf9e3cf",
   "gulpStartupTasks": [
     "sass",
     "watch"

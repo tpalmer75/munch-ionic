@@ -14,7 +14,7 @@ angular.module('starter.services', [])
     name: 'Max Lynx',
     lastText: 'Hey, it\'s me',
     face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  },{
+  }, {
     id: 2,
     name: 'Adam Bradleyson',
     lastText: 'I should buy a boat',
@@ -42,6 +42,41 @@ angular.module('starter.services', [])
       for (var i = 0; i < chats.length; i++) {
         if (chats[i].id === parseInt(chatId)) {
           return chats[i];
+        }
+      }
+      return null;
+    }
+  };
+})
+.factory('Meals', function() {
+
+  var meals = [{
+    id: 0,
+    name: 'Lemon Garlic Chicken',
+    ingredients: ["apple","lemon","seeds"]
+  }, {
+    id: 1,
+    name: 'Chicken Pockets',
+  }, {
+    id: 2,
+    name: 'Steak and Berry Salad',
+  }, {
+    id: 3,
+    name: 'Beef Stew',
+  }, {
+    id: 4,
+    name: 'Longer title name that might overflow if the screen is too small',
+
+  }];
+
+  return {
+    all: function() {
+      return meals;
+    },
+    get: function(mealId) {
+      for (var i = 0; i < meals.length; i++) {
+        if (meals[i].id === parseInt(mealId)) {
+          return meals[i];
         }
       }
       return null;

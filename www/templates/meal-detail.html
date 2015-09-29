@@ -1,0 +1,18 @@
+<ion-view view-title="{{meal.name}}">
+    <ion-content>
+        <h5 class="list-header">
+            Meal Name
+        </h5>
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" value="{{meal.name}}">
+            </label>
+        </div>
+        <h5 class="list-header">
+            Ingredients
+        </h5>
+        <label class="item item-input" ng-repeat="ingredient in meal.ingredients">
+            <input type="text" value="{{ ingredient }}">
+        </label>
+    </ion-content>
+</ion-view>

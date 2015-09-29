@@ -1,105 +1,26 @@
 <ion-view view-title="Meals">
-<ion-nav-bar class="bar-balanced no-shadow" align-title="left">
-<ion-nav-buttons side="right">
-<button class="button button-icon button-clear ion-android-more-vertical activated" ng-click="doSomething()"></button>
-</ion-nav-buttons>
-</ion-nav-bar>
-<ion-tabs class="tabs-striped tabs-top tabs-background-balanced tabs-color-light">
-<ion-tab title="MAIN DISHES">
-<ion-content class="has-header has-tabs-top has-tabs-bottom">
-<ul class="list">
-  <li class="item">
-    Meal Item 1
-  </li>
-  <li class="item">
-    Meal Item 2
-  </li>
-  <li class="item">
-    Meal Item 3
-  </li>
-  <li class="item">
-    Meal Item 4
-  </li>
-  <li class="item">
-    Meal Item 5
-  </li>
-  <li class="item">
-    Meal Item 6
-  </li>
-  <li class="item">
-    Meal Item 7
-  </li>
-  <li class="item">
-    Meal Item 8
-  </li>
-  <li class="item">
-    Meal Item 9
-  </li>
-  <li class="item">
-    Meal Item 10
-  </li>
-  <li class="item">
-    Meal Item 11
-  </li>
-  <li class="item">
-    Meal Item 12
-  </li>
-  <li class="item">
-    Meal Item 13
-  </li>
-</ul>
-</ion-content>
-<button id="fab" class="button button-balanced button-fab button-fab-bottom-right has-tabs-bottom">
-<i class="mdi mdi-plus"></i>
-</button>
-</ion-tab>
-<ion-tab title="SIDE DISHES">
-<ion-content class="has-header has-tabs-top">
-<ul class="list">
-  <li class="item">
-    Lunch Item 1
-  </li>
-  <li class="item">
-    Lunch Item 2
-  </li>
-  <li class="item">
-    Lunch Item 3
-  </li>
-  <li class="item">
-    Lunch Item 4
-  </li>
-  <li class="item">
-    Lunch Item 5
-  </li>
-  <li class="item">
-    Lunch Item 6
-  </li>
-  <li class="item">
-    Lunch Item 7
-  </li>
-  <li class="item">
-    Lunch Item 8
-  </li>
-  <li class="item">
-    Lunch Item 9
-  </li>
-  <li class="item">
-    Lunch Item 10
-  </li>
-  <li class="item">
-    Lunch Item 11
-  </li>
-  <li class="item">
-    Lunch Item 12
-  </li>
-  <li class="item">
-    Lunch Item 13
-  </li>
-</ul>
-</ion-content>
-<button id="fab" class="button button-balanced button-fab button-fab-bottom-right has-tabs-bottom">
-<i class="mdi mdi-plus"></i>
-</button>
-</ion-tab>
-</ion-tabs>
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="data.showDelete = !data.showDelete;">
+            Edit
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="doSomething()">
+            <i class="icon ion-ios-plus-empty"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list show-delete="data.showDelete">
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="meal in meals" href="#/tab/meals/{{meal.id}}">
+                <ion-delete-button class="ion-ios-minus-outline" 
+                             ng-click="meals.splice($index, 1)">
+          </ion-delete-button>
+                <h2>{{meal.name}}</h2>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>
