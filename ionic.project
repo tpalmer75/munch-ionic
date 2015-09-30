@@ -1,5 +1,5 @@
 {
-  "name": "newApp",
+  "name": "munch-ionic",
   "app_id": "1bf9e3cf",
   "gulpStartupTasks": [
     "sass",

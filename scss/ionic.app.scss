@@ -30,3 +30,18 @@ ion-content {
 .bar .button.button-clear {
 	font-weight: inherit;
 }
+
+.item-delete {
+	.button-icon .icon:before, .button-icon.icon:before {
+		font-size: 24px;
+	}
+}
+
+.list-header {
+	i {
+		float: right;
+		font-size: 24px;
+		vertical-align: middle;
+		margin-top: -6px;
+	}
+}

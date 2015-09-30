@@ -1,16 +1,18 @@
-<ion-view view-title="{{meal.name}}">
+<ion-view view-title="{{meal.name}}" hide-back-button="true">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="$ionicGoBack()">Cancel</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="doSomething()">Save</button>
+    </ion-nav-buttons>
     <ion-content>
-        <h5 class="list-header">
-            Meal Name
-        </h5>
+        <h5 class="list-header">Meal Name</h5>
         <div class="list">
             <label class="item item-input">
                 <input type="text" value="{{meal.name}}">
             </label>
         </div>
-        <h5 class="list-header">
-            Ingredients
-        </h5>
+        <h5 class="list-header">Ingredients<i class="ion-ios-plus-outline" ng-click="alert('hello');"></i></h5>
         <label class="item item-input" ng-repeat="ingredient in meal.ingredients">
             <input type="text" value="{{ ingredient }}">
         </label>
