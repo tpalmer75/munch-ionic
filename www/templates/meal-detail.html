@@ -18,9 +18,9 @@
         </label> -->
 
 
-        <ion-list class="input-list" can-swipe="false">
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients" href="#/tab/meals/{{meal.id}}">
-                <i open-options class="ion-ios-minus-outline"></i>
+        <ion-list class="input-list">
+            <ion-item open-options class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients" href="#/tab/meals/{{meal.id}}">
+                <i class="ion-ios-minus-outline"></i>
                 <label close-options class="item item-input">
                     <input type="text" value="{{ ingredient }}">
                 </label>
