@@ -45,3 +45,10 @@ ion-content {
 		margin-top: -6px;
 	}
 }
+
+.input-list .item-content {
+	padding: 0;
+	.item {
+		border-right: 0;
+	}
+}

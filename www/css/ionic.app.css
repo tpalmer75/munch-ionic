@@ -7714,3 +7714,8 @@ ion-content {
   font-size: 24px;
   vertical-align: middle;
   margin-top: -6px; }
+
+.input-list .item-content {
+  padding: 0; }
+  .input-list .item-content .item {
+    border-right: 0; }

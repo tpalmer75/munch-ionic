@@ -1,4 +1,4 @@
-<ion-view view-title="{{meal.name}}" hide-back-button="true">
+<ion-view view-title="Edit Meal" hide-back-button="true">
     <ion-nav-buttons side="left">
         <button class="button button-clear" ng-click="$ionicGoBack()">Cancel</button>
     </ion-nav-buttons>
@@ -13,8 +13,24 @@
             </label>
         </div>
         <h5 class="list-header">Ingredients<i class="ion-ios-plus-outline" ng-click="alert('hello');"></i></h5>
-        <label class="item item-input" ng-repeat="ingredient in meal.ingredients">
+        <!-- <label class="item item-input" ng-repeat="ingredient in meal.ingredients">
             <input type="text" value="{{ ingredient }}">
-        </label>
+        </label> -->
+
+
+        <ion-list class="input-list" can-swipe="false">
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients" href="#/tab/meals/{{meal.id}}">
+                <i open-options class="ion-ios-minus-outline"></i>
+                <label close-options class="item item-input">
+                    <input type="text" value="{{ ingredient }}">
+                </label>
+                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
+                    Delete
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+
+
+
     </ion-content>
 </ion-view>

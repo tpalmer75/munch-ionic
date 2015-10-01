@@ -9,7 +9,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('MealDetailCtrl', function($scope, $stateParams, Meals) {
+  
   $scope.meal = Meals.get($stateParams.mealId);
+
+
+  $scope.addIngredient = function() {
+    
+  };
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
