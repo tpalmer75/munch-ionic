@@ -37,18 +37,29 @@ ion-content {
 	}
 }
 
-.list-header {
-	i {
-		float: right;
-		font-size: 24px;
-		vertical-align: middle;
-		margin-top: -6px;
+.input-list {
+	.item-icon-right .item-content {
+		padding: 0;
 	}
-}
-
-.input-list .item-content {
-	padding: 0;
 	.item {
 		border-right: 0;
+	}
+	label {
+		padding-left: 48px;
+	}
+	.static-delete {
+		position: absolute;
+		top: 10px;
+		left: 12px;
+		z-index: 3;
+		font-size: 24px;
+	}
+	input[readonly] {
+		background: #fff;
+	}
+	.add-item {
+		.item-content {
+			padding: 0;
+		}
 	}
 }
