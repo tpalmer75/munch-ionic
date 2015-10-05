@@ -30,3 +30,43 @@ ion-content {
 .bar .button.button-clear {
 	font-weight: inherit;
 }
+
+.item-delete {
+	.button-icon .icon:before, .button-icon.icon:before {
+		font-size: 24px;
+	}
+}
+
+.input-list {
+	.item-icon-right .item-content {
+		padding: 0;
+	}
+	.item {
+		border-right: 0;
+	}
+	label {
+		padding-left: 48px;
+	}
+	.static-delete {
+		position: absolute;
+		padding: 10px;
+		top: 0;
+		left: 2px;
+		z-index: 3;
+		font-size: 24px;
+	}
+	input[readonly] {
+		background: #fff;
+	}
+	.add-item {
+		.item-content {
+			padding: 0;
+		}
+	}
+}
+
+.button.button-full.button-full-delete {
+	background: #fff;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
