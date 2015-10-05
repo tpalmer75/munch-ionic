@@ -7717,11 +7717,17 @@ ion-content {
   padding-left: 48px; }
 .input-list .static-delete {
   position: absolute;
-  top: 10px;
-  left: 12px;
+  padding: 10px;
+  top: 0;
+  left: 2px;
   z-index: 3;
   font-size: 24px; }
 .input-list input[readonly] {
   background: #fff; }
 .input-list .add-item .item-content {
   padding: 0; }
+
+.button.button-full.button-full-delete {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; }

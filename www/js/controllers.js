@@ -14,8 +14,40 @@ angular.module('starter.controllers', [])
 
 
   $scope.addIngredient = function() {
-    
+    console.log("add");
+    // var thisMeal = Meals.get($stateParams.mealId);
+    // thisMeal.push({
+    //   ingredients: ""
+    // });
   };
+})
+
+.controller('createMealCtrl', function($scope, $ionicModal, Meals) {
+  $ionicModal.fromTemplateUrl('/templates/meal-create.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+    //$scope.ingredients = 
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  $scope.$on('modal.hidden', function() {
+    console.log('hidden');
+  });
+
+  $scope.$on('modal.removed', function() {
+    console.log('removed');
+  });
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {

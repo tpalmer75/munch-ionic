@@ -53,19 +53,23 @@ angular.module('starter.services', [])
   var meals = [{
     id: 0,
     name: 'Lemon Garlic Chicken',
-    ingredients: ["apple","lemon","seeds"]
+    ingredients: ["apple","lemon","seeds", ""]
   }, {
     id: 1,
     name: 'Chicken Pockets',
+    ingredients: []
   }, {
     id: 2,
     name: 'Steak and Berry Salad',
+    ingredients: []
   }, {
     id: 3,
     name: 'Beef Stew',
+    ingredients: []
   }, {
     id: 4,
     name: 'Longer title name that might overflow if the screen is too small',
+    ingredients: []
 
   }];
 

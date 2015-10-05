@@ -131,13 +131,12 @@ angular.module('munch.directives', [])
             content.style[ionic.CSS.TRANSFORM] = '';
             setTimeout(function() {
               buttons.classList.add('invisible');
+
+              var input = element.parent()[0].querySelector('input');
+            angular.element(input).attr('readonly', '');
+            console.log('Back to normal');
             }, 250);        
         });   
-        setTimeout(function() {
-        	var input = element.parent()[0].querySelector('input');
-        	angular.element(input).attr('readonly', '');
-        	console.log('Back to normal');
-        }, 300);
         
 
       }, element);
