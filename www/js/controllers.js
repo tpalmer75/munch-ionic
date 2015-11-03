@@ -30,11 +30,11 @@ angular.module('starter.controllers', [])
     //$scope.ingredients = 
   });
   $scope.createMeal = function(newMeal) {
-    console.log('New Meal');
+    console.log('New Meal', newID);
 
     $scope.allMeals = Meals.all();
-    //$scope.listLength = Meals.length;
-    var newData = {id: 10, name: newMeal.name};
+    var newID = (Meals.findLast() + 1);
+    var newData = {id: newID, name: newMeal.name};
     $scope.allMeals.push(newData);
 
     newMeal.name = "";
