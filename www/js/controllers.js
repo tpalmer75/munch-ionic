@@ -11,25 +11,35 @@ angular.module('starter.controllers', [])
 .controller('MealDetailCtrl', function($scope, $stateParams, Meals) {
   
   $scope.meal = Meals.get($stateParams.mealId);
+  $scope.allMeals = Meals.all;
 
 
   $scope.addIngredient = function() {
     console.log("add");
-    // var thisMeal = Meals.get($stateParams.mealId);
-    // thisMeal.push({
-    //   ingredients: ""
-    // });
+
+   // $scope.allMeals.push($scope.)
   };
 })
 
-.controller('createMealCtrl', function($scope, $ionicModal, Meals) {
-  $ionicModal.fromTemplateUrl('/templates/meal-create.html', {
+.controller('createMealCtrl', function($scope, $rootScope, $ionicModal, $stateParams, Meals) {
+  $ionicModal.fromTemplateUrl('templates/meal-create.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal = modal;
     //$scope.ingredients = 
   });
+  $scope.createMeal = function(newMeal) {
+    console.log('New Meal');
+
+    $scope.allMeals = Meals.all();
+    //$scope.listLength = Meals.length;
+    var newData = {id: 10, name: newMeal.name};
+    $scope.allMeals.push(newData);
+
+    newMeal.name = "";
+
+  }
   $scope.openModal = function() {
     $scope.modal.show();
   };

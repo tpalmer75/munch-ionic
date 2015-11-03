@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('munchApp', ['ionic', 'starter.controllers', 'starter.services', 'munch.directives'])
+angular.module('munchApp', ['ionic', 'starter.controllers', 'starter.services', 'munch.directives', 'ngIOS9UIWebViewPatch'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -18,7 +18,7 @@ angular.module('munchApp', ['ionic', 'starter.controllers', 'starter.services', 
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
-      StatusBar.styleDarkContent();
+      StatusBar.Default();
     }
   });
 })
