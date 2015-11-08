@@ -22,24 +22,46 @@ angular.module('starter.controllers', [])
 })
 
 .controller('createMealCtrl', function($scope, $rootScope, $ionicModal, $stateParams, Meals) {
+  
+  $scope.fakeMeals = [{
+    id: 0,
+    name: 'Noodle Soup',
+    ingredients: ["Noodles", "Water", "Believe"],
+    placeholders: ["Fake", "Fake 2", "Fake 3"]
+  }, {
+    id: 1,
+    name: 'Yoda Soda',
+    ingredients: ["Sprite", "Ice Cream", "The Force"]
+  }, {
+    id: 2,
+    name: "Mario's Mushrooms",
+    ingredients: ["A sweet moustache", "Mushrooms", "Third Item"]
+  }];
+
+  $scope.randomNumber = Math.floor(Math.random() * 3);
+
+  $scope.dummyMeal = {
+    name: "",
+    ingredients: ["", "", ""]
+  };
+
   $ionicModal.fromTemplateUrl('templates/meal-create.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
     $scope.modal = modal;
-    //$scope.ingredients = 
   });
   $scope.createMeal = function(newMeal) {
     console.log('New Meal', newID);
 
     $scope.allMeals = Meals.all();
     var newID = (Meals.findLast() + 1);
-    var newData = {id: newID, name: newMeal.name};
+    var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
     $scope.allMeals.push(newData);
-
-    newMeal.name = "";
-
   }
+  $scope.addIngredient = function(newMeal) {
+    $scope.dummyMeal.ingredients.push("");
+  };
   $scope.openModal = function() {
     $scope.modal.show();
   };

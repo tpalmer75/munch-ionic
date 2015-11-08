@@ -19,7 +19,7 @@ angular.module('starter.services', [])
     name: 'Beef Stew',
     ingredients: []
   }, {
-    id: 99,
+    id: 4,
     name: 'Longer title name that might overflow if the screen is too small',
     ingredients: []
   }];

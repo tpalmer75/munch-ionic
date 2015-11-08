@@ -9,17 +9,12 @@
         <h5 class="list-header">Meal Name</h5>
         <div class="list">
             <label class="item item-input">
-                <input type="text" value="{{meal.name}}">
+                <input type="text" placeholder="Meal name" ng-model="meal.name">
             </label>
         </div>
         <h5 class="list-header">Ingredients</h5>
-        <!-- <label class="item item-input" ng-repeat="ingredient in meal.ingredients">
-            <input type="text" value="{{ ingredient }}">
-        </label> -->
-
-
         <ion-list class="input-list">
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients">
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients track by $index">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
                     <input type="text" value="{{ ingredient }}">
@@ -28,7 +23,7 @@
                     Delete
                 </ion-option-button>
             </ion-item>
-            <ion-item ng-click="addIngredient()" class="add-item">
+            <ion-item ng-click="addIngredient();" class="add-item">
                 <i class="ion-ios-plus balanced static-delete"></i>
                 <label class="item item-input">
                     <input type="text" value="Add ingredient" readonly="readonly">
