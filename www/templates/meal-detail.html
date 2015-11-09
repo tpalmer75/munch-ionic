@@ -1,10 +1,4 @@
-<ion-view view-title="Edit Meal" hide-back-button="true">
-    <ion-nav-buttons side="left">
-        <button class="button button-clear" ng-click="$ionicGoBack()">Cancel</button>
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-        <button class="button button-clear" ng-click="doSomething()">Save</button>
-    </ion-nav-buttons>
+<ion-view view-title="Edit Meal">
     <ion-content>
         <h5 class="list-header">Meal Name</h5>
         <div class="list">
@@ -14,12 +8,12 @@
         </div>
         <h5 class="list-header">Ingredients</h5>
         <ion-list class="input-list">
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in meal.ingredients track by $index">
+            <ion-item class="item-remove-animate item-icon-right cu-item-enter-animate" ng-repeat="ingredient in meal.ingredients track by $index">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
-                    <input type="text" value="{{ ingredient }}">
+                    <input type="text" placeholder="Ingredient" ng-model="ingredient">
                 </label>
-                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
+                <ion-option-button class="button-assertive" ng-click="meal.ingredients.splice($index, 1)">
                     Delete
                 </ion-option-button>
             </ion-item>
@@ -34,6 +28,5 @@
         </ion-list>
         <h5 class="list-header"></h5>
         <button class="button button-full button-outline button-assertive button-full-delete">Delete meal</button>
-
     </ion-content>
 </ion-view>

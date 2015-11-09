@@ -15,9 +15,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.addIngredient = function() {
-    console.log("add");
-
-   // $scope.allMeals.push($scope.)
+    $scope.meal.ingredients.push("");
   };
 })
 

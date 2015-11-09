@@ -70,3 +70,15 @@ ion-content, .content {
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
 }
+
+.cu-item-enter-animate {
+	transition: height .2s;
+	overflow: hidden;
+	height: auto;
+	&.ng-enter {
+		height: 0;
+	}
+	&.ng-enter-active {
+		height: 47px;
+	}
+}

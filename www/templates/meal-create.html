@@ -17,42 +17,15 @@
         </div>
         <h5 class="list-header">Ingredients</h5>
         <ion-list class="input-list">
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="ingredient in dummyMeal.ingredients track by $index">
+            <ion-item class="item-remove-animate item-icon-right cu-item-enter-animate" ng-repeat="ingredient in dummyMeal.ingredients track by $index">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
                     <input type="text" placeholder="Test" ng-model="dummyMeal.ingredients[$index]">
                 </label>
-                <ion-option-button class="button-assertive" ng-click="dummyMeal.ingredients.splice($index, 1)">
+                <ion-option-button class="button-assertive" ng-click="ingredient.splice($index, 1)">
                     Delete
                 </ion-option-button>
             </ion-item>
-            <!-- <ion-item class="item-remove-animate item-icon-right">
-                <i open-options class="ion-ios-minus assertive static-delete"></i>
-                <label close-options class="item item-input">
-                    <input type="text" placeholder="{{ fakeMeals[randomNumber].ingredients[0] }}">
-                </label>
-                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
-                    Delete
-                </ion-option-button>
-            </ion-item>
-            <ion-item class="item-remove-animate item-icon-right">
-                <i open-options class="ion-ios-minus assertive static-delete"></i>
-                <label close-options class="item item-input">
-                    <input type="text" placeholder="{{ fakeMeals[randomNumber].ingredients[1] }}">
-                </label>
-                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
-                    Delete
-                </ion-option-button>
-            </ion-item>
-            <ion-item class="item-remove-animate item-icon-right">
-                <i open-options class="ion-ios-minus assertive static-delete"></i>
-                <label close-options class="item item-input">
-                    <input type="text" placeholder="{{ fakeMeals[randomNumber].ingredients[2] }}">
-                </label>
-                <ion-option-button class="button-assertive" ng-click="meals.splice($index, 1)">
-                    Delete
-                </ion-option-button>
-            </ion-item>  -->
             <ion-item ng-click="addIngredient();" class="add-item">
                 <i class="ion-ios-plus balanced static-delete"></i>
                 <label class="item item-input">
