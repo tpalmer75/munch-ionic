@@ -16,9 +16,6 @@ angular.module('munch.directives', [])
 
         angular.element(input).attr('readonly', 'readonly');
 
-
-        //document.getElementById('foo').readOnly = true;
-
         if (!buttons) {
           console.log('There are no option buttons');
           return;
@@ -26,9 +23,6 @@ angular.module('munch.directives', [])
         var buttonsWidth = buttons.offsetWidth;
 
         ionic.requestAnimationFrame(function() {
-          //content.style[ionic.CSS.TRANSITION] = 'all ease-out .25s';
-
-
             buttons.classList.remove('invisible');
             content.style[ionic.CSS.TRANSFORM] = 'translate3d(-' + buttonsWidth + 'px, 0, 0)';
         });   
@@ -56,10 +50,7 @@ angular.module('munch.directives', [])
         }
         var buttonsWidth = buttons.offsetWidth;
 
-
-
         ionic.requestAnimationFrame(function() {
-         //content.style[ionic.CSS.TRANSITION] = 'all ease-out .25s';
 
             console.log('close');
             content.style[ionic.CSS.TRANSFORM] = '';

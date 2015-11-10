@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('munchApp', ['ionic', 'starter.controllers', 'starter.services', 'munch.directives', 'ngAnimate', 'ngIOS9UIWebViewPatch'])
+angular.module('munchApp', ['ionic', 'starter.controllers', 'munch.services', 'munch.directives', 'ngAnimate', 'ngIOS9UIWebViewPatch'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -59,21 +59,12 @@ angular.module('munchApp', ['ionic', 'starter.controllers', 'starter.services', 
         }
       })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.schedule', {
+      url: '/schedule',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-schedule': {
+          templateUrl: 'templates/tab-schedule.html',
+          controller: 'ScheduleCtrl'
         }
       }
     })

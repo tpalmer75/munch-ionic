@@ -72,13 +72,17 @@ ion-content, .content {
 }
 
 .cu-item-enter-animate {
-	transition: height .2s;
-	overflow: hidden;
 	height: auto;
 	&.ng-enter {
 		height: 0;
+		transition: height .15s;
+		overflow: hidden;
 	}
 	&.ng-enter-active {
 		height: 47px;
 	}
+}
+
+.list-header.schedule {
+	color: #878787;
 }

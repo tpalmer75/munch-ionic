@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('munch.services', [])
 
 .factory('Meals', function() {
 
@@ -42,6 +42,16 @@ angular.module('starter.services', [])
         return meals[listLength - 1].id;
       } else {
         return 1;
+      }
+    },
+    delete: function(mealId) {
+      console.log('Im trying');
+      for (var i = 0; i < meals.length; i++) {
+        if (meals[i].id === parseInt(mealId)) {
+          meals.splice(i, 1);
+          console.log('I tried');
+          return null;
+        }
       }
     }
   };

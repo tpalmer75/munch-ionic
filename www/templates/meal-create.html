@@ -1,7 +1,7 @@
 <ion-modal-view>
     <div class="bar bar-header bar-balanced">
         <div class="buttons">
-            <button class="button button-clear" ng-click="closeModal()">Cancel</button>
+            <button class="button button-clear" ng-click="closeModal();">Cancel</button>
         </div>
         <h1 class="title">Create meal</h1>
         <div class="buttons">
@@ -22,7 +22,7 @@
                 <label close-options class="item item-input">
                     <input type="text" placeholder="Test" ng-model="dummyMeal.ingredients[$index]">
                 </label>
-                <ion-option-button class="button-assertive" ng-click="ingredient.splice($index, 1)">
+                <ion-option-button class="button-assertive" ng-click="dummyMeal.ingredients.splice(ingredient.$index, 1)">
                     Delete
                 </ion-option-button>
             </ion-item>
