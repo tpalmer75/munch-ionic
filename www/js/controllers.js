@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('MealDetailCtrl', function($scope, $stateParams, Meals, $ionicHistory) {
+.controller('MealDetailCtrl', function($scope, $stateParams, Meals, $ionicHistory, $ionicPopup) {
   
   $scope.meal = Meals.get($stateParams.mealId);
   $scope.allMeals = Meals.all;
@@ -26,6 +26,24 @@ angular.module('starter.controllers', [])
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Delete Meal',
+     template: 'You sure you wanna delete this?',
+     buttons: [
+      { text: 'Nope' },
+      {
+        text: '<b>Yep</b>',
+        type: 'button-positive',
+        onTap: function() {
+          $scope.deleteMeal();
+          $ionicHistory.goBack();
+        }
+      }
+    ]
+   });
+ };
 })
 
 .controller('createMealCtrl', function($scope, $rootScope, $ionicModal, $stateParams, Meals) {

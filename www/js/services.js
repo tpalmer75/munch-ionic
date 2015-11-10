@@ -45,12 +45,9 @@ angular.module('munch.services', [])
       }
     },
     delete: function(mealId) {
-      console.log('Im trying');
       for (var i = 0; i < meals.length; i++) {
         if (meals[i].id === parseInt(mealId)) {
           meals.splice(i, 1);
-          console.log('I tried');
-          return null;
         }
       }
     }
