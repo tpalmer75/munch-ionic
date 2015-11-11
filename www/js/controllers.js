@@ -1,53 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('MealsCtrl', function($scope, Meals) {
+.controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals) {
 
   $scope.meals = Meals.all();
   $scope.data = {
     showDelete: false
   };
-})
 
-.controller('MealDetailCtrl', function($scope, $stateParams, Meals, $ionicHistory, $ionicPopup) {
-  
-  $scope.meal = Meals.get($stateParams.mealId);
-  $scope.allMeals = Meals.all;
-
-
-  $scope.addIngredient = function() {
-    $scope.meal.ingredients.push("");
-  };
-
-  $scope.deleteMeal = function() {
-    console.log('Delete');
-    Meals.delete($stateParams.mealId);
-  };
-
-  $scope.goBack = function() {
-    $ionicHistory.goBack();
-  };
-
-  $scope.showConfirm = function() {
-   var confirmPopup = $ionicPopup.confirm({
-     title: 'Delete Meal',
-     template: 'You sure you wanna delete this?',
-     buttons: [
-      { text: 'Nope' },
-      {
-        text: '<b>Yep</b>',
-        type: 'button-positive',
-        onTap: function() {
-          $scope.deleteMeal();
-          $ionicHistory.goBack();
-        }
-      }
-    ]
-   });
- };
-})
-
-.controller('createMealCtrl', function($scope, $rootScope, $ionicModal, $stateParams, Meals) {
-  
   $scope.fakeMeals = [{
     id: 0,
     name: 'Noodle Soup',
@@ -69,6 +28,9 @@ angular.module('starter.controllers', [])
     name: "",
     ingredients: ["", "", ""]
   };
+
+
+  //---- IONIC MODAL ----- //
 
   $ionicModal.fromTemplateUrl('templates/meal-create.html', {
     scope: $scope,
@@ -107,7 +69,78 @@ angular.module('starter.controllers', [])
   });
 })
 
-.controller('ScheduleCtrl', function($scope) {
+.controller('MealDetailCtrl', function($scope, $stateParams, Meals, $ionicHistory, $ionicPopup) {
+  
+  $scope.meal = Meals.get($stateParams.mealId);
+  $scope.allMeals = Meals.all;
+
+
+  $scope.addIngredient = function() {
+    $scope.meal.ingredients.push("");
+  };
+
+  $scope.deleteMeal = function() {
+    console.log('Delete');
+    Meals.delete($stateParams.mealId);
+  };
+
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
+  };
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Delete Meal',
+     template: 'You sure you wanna delete this?',
+     buttons: [
+      { 
+        text: 'Nope',
+        type: 'button-positive button-clear',
+      },
+      {
+        text: '<b>Yep</b>',
+        type: 'button-positive button-clear',
+        onTap: function() {
+          $scope.deleteMeal();
+          $ionicHistory.goBack();
+        }
+      }
+    ]
+   });
+ };
+})
+
+
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals) {
+
+  $scope.allMeals = Meals.all();
+
+  $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+
+
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.createMeal = function(newMeal) {
+    console.log('New Meal', newID);
+
+    $scope.allMeals = Meals.all();
+    var newID = (Meals.findLast() + 1);
+    var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
+    $scope.allMeals.push(newData);
+  }
+  $scope.addIngredient = function(newMeal) {
+    $scope.dummyMeal.ingredients.push("");
+  };
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
 
 
 })

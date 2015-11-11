@@ -83,6 +83,41 @@ ion-content, .content {
 	}
 }
 
-.list-header.schedule {
-	color: #878787;
+.popup-container {
+	.popup {
+		border-radius: 4px;
+    	text-align: center;
+    }
+    .popup-buttons {
+    	min-height: initial;
+  		padding: 0;
+  		button:before {
+  			display: block;
+  			width: 1px;
+  			height: 100%;
+  			background: #eee;
+  			position: absolute;
+  			top: 0;
+  			right: 0;
+  		}
+    }
+    .popup-body {
+    	padding: 20px 0;
+    }
+}
+
+.schedule {
+	.list {
+		background: white;
+		min-height: 30px;
+	}
+	.list-header {
+		color: #878787;
+		.icon {
+			float: right;
+			font-size: 36px;
+			color: $balanced;
+			margin-top: -10px;
+		}
+	}
 }

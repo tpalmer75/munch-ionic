@@ -7741,5 +7741,30 @@ ion-content, .content {
   .cu-item-enter-animate.ng-enter-active {
     height: 47px; }
 
-.list-header.schedule {
+.popup-container .popup {
+  border-radius: 4px;
+  text-align: center; }
+.popup-container .popup-buttons {
+  min-height: initial;
+  padding: 0; }
+  .popup-container .popup-buttons button:before {
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: #eee;
+    position: absolute;
+    top: 0;
+    right: 0; }
+.popup-container .popup-body {
+  padding: 20px 0; }
+
+.schedule .list {
+  background: white;
+  min-height: 30px; }
+.schedule .list-header {
   color: #878787; }
+  .schedule .list-header .icon {
+    float: right;
+    font-size: 36px;
+    color: #8BC34A;
+    margin-top: -10px; }

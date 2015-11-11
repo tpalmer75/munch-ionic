@@ -1,14 +1,24 @@
 <ion-view view-title="Schedule">
-  <ion-content>
-    <h5 class="list-header schedule">Monday</h5>
+    <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="">
+            Clear All
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="">
+            Random
+        </button>
+    </ion-nav-buttons>
+  <ion-content class="schedule">
+    <h5 class="list-header schedule">Monday<i class="icon ion-ios-plus-empty" ng-controller="ScheduleCtrl" ng-click="openModal()"></i></h5>
     <ion-list>
     </ion-list>
-    <h5 class="list-header schedule">Tuesday</h5>
+    <h5 class="list-header schedule">Tuesday<i class="icon ion-ios-plus-empty"></i></h5></h5>
+        <ion-list></ion-list>
     <h5 class="list-header schedule">Wednesday</h5>
     <h5 class="list-header schedule">Thursday</h5>
     <h5 class="list-header schedule">Friday</h5>
     <h5 class="list-header schedule">Saturday</h5>
     <h5 class="list-header schedule">Sunday</h5>
-
   </ion-content>
 </ion-view>
