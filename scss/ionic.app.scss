@@ -71,17 +71,17 @@ ion-content, .content {
 	border-bottom: 1px solid #ddd;
 }
 
-.cu-item-enter-animate {
-	height: auto;
-	&.ng-enter {
-		height: 0;
-		transition: height .15s;
-		overflow: hidden;
-	}
-	&.ng-enter-active {
-		height: 47px;
-	}
-}
+// .cu-item-enter-animate {
+// 	height: auto;
+// 	&.ng-enter {
+// 		height: 0;
+// 		transition: height .15s;
+// 		overflow: hidden;
+// 	}
+// 	&.ng-enter-active {
+// 		height: 47px;
+// 	}
+// }
 
 .popup-container {
 	.popup {
@@ -113,11 +113,13 @@ ion-content, .content {
 	}
 	.list-header {
 		color: #878787;
+		position: relative;
 		.icon {
-			float: right;
 			font-size: 36px;
 			color: $balanced;
-			margin-top: -10px;
+			position: absolute;
+			right: 10px;
+			top: -7px;
 		}
 	}
 }

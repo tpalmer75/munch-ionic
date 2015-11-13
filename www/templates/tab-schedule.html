@@ -10,15 +10,11 @@
         </button>
     </ion-nav-buttons>
   <ion-content class="schedule">
-    <h5 class="list-header schedule">Monday<i class="icon ion-ios-plus-empty" ng-controller="ScheduleCtrl" ng-click="openModal()"></i></h5>
-    <ion-list>
-    </ion-list>
-    <h5 class="list-header schedule">Tuesday<i class="icon ion-ios-plus-empty"></i></h5></h5>
-        <ion-list></ion-list>
-    <h5 class="list-header schedule">Wednesday</h5>
-    <h5 class="list-header schedule">Thursday</h5>
-    <h5 class="list-header schedule">Friday</h5>
-    <h5 class="list-header schedule">Saturday</h5>
-    <h5 class="list-header schedule">Sunday</h5>
+    <div ng-repeat="day in currentSchedule">
+        <h5 class="list-header schedule">{{ day.name }}<i class="icon ion-ios-plus-empty" ng-click="openModal(); dayOfWeek = {{ day.dayInt }};"></i></h5>
+        <ion-list>
+            <ion-item ng-repeat="meal in day.meals track by $index">{{ mealName(meal); }}</ion-item>
+        </ion-list>
+    </div>
   </ion-content>
 </ion-view>

@@ -7732,15 +7732,6 @@ ion-content, .content {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd; }
 
-.cu-item-enter-animate {
-  height: auto; }
-  .cu-item-enter-animate.ng-enter {
-    height: 0;
-    transition: height .15s;
-    overflow: hidden; }
-  .cu-item-enter-animate.ng-enter-active {
-    height: 47px; }
-
 .popup-container .popup {
   border-radius: 4px;
   text-align: center; }
@@ -7762,9 +7753,11 @@ ion-content, .content {
   background: white;
   min-height: 30px; }
 .schedule .list-header {
-  color: #878787; }
+  color: #878787;
+  position: relative; }
   .schedule .list-header .icon {
-    float: right;
     font-size: 36px;
     color: #8BC34A;
-    margin-top: -10px; }
+    position: absolute;
+    right: 10px;
+    top: -7px; }

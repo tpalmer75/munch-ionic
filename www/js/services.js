@@ -22,6 +22,10 @@ angular.module('munch.services', [])
     id: 4,
     name: 'Longer title name that might overflow if the screen is too small',
     ingredients: []
+  }, {
+    id: 5,
+    name: 'Another meal name',
+    ingredients: []
   }];
 
   return {
@@ -50,6 +54,61 @@ angular.module('munch.services', [])
           meals.splice(i, 1);
         }
       }
+    }, 
+    mirror: function(tempID) { // used for schedule
+      for (var i = 0; i < meals.length; i++) {
+        if (meals[i].id === tempID) {
+          return meals[i].name;
+        }
+      }
+      return null;
+    }
+  };
+})
+
+.factory('Schedule', function(Meals) {
+
+  var mealQueue = [{
+    dayInt: 0,
+    name: "Monday",
+    meals: []
+  }, {
+    dayInt: 1,
+    name: "Tuesday",
+    meals: []
+  }, {
+    dayInt: 2,
+    name: "Wednesday",
+    meals: []
+  }, {
+    dayInt: 3,
+    name: "Thursday",
+    meals: []
+  }, {
+    dayInt: 4,
+    name: "Friday",
+    meals: []
+  }, {
+    dayInt: 5,
+    name: "Saturday",
+    meals: []
+  }, {
+    dayInt: 6,
+    name: "Sunday",
+    meals: []
+  }];
+
+  return {
+    all: function() {
+      return mealQueue;
+    },
+    get: function(day) {
+      for (var i = 0; i < mealQueue.length; i++) {
+        if (mealQueue[i].dayInt === parseInt(day)) {
+          return mealQueue[i];
+        }
+      }
+      return null;
     }
   };
 });

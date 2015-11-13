@@ -1,5 +1,8 @@
 angular.module('starter.controllers', [])
 
+// -------------------------- MEAL CTRL ---------------------------
+
+
 .controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals) {
 
   $scope.meals = Meals.all();
@@ -24,13 +27,7 @@ angular.module('starter.controllers', [])
 
   $scope.randomNumber = Math.floor(Math.random() * 3);
 
-  $scope.dummyMeal = {
-    name: "",
-    ingredients: ["", "", ""]
-  };
-
-
-  //---- IONIC MODAL ----- //
+  $scope.dummyMeal = {};
 
   $ionicModal.fromTemplateUrl('templates/meal-create.html', {
     scope: $scope,
@@ -49,8 +46,21 @@ angular.module('starter.controllers', [])
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
   };
+  $scope.deleteItem = function(item) {
+    // var index = $scope.dummyMeal.ingredients.indexOf(item);
+    // if (index !== -1) {
+    //   console.log(index);
+    //   $scope.dummyMeal.ingredients.splice(index, 1);
+    // }
+    $scope.dummyMeal.ingredients.splice(item, 1);
+    console.log(item);
+  };
   $scope.openModal = function() {
     $scope.modal.show();
+    $scope.dummyMeal = {
+      name: "",
+      ingredients: ["", "", ""]
+    };
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
@@ -69,11 +79,12 @@ angular.module('starter.controllers', [])
   });
 })
 
+// -------------------------- MEAL DETAIL ---------------------------
+
 .controller('MealDetailCtrl', function($scope, $stateParams, Meals, $ionicHistory, $ionicPopup) {
   
   $scope.meal = Meals.get($stateParams.mealId);
   $scope.allMeals = Meals.all;
-
 
   $scope.addIngredient = function() {
     $scope.meal.ingredients.push("");
@@ -111,18 +122,26 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ScheduleCtrl', function($scope, $ionicModal, Meals) {
+// -------------------------- SCHEDULE CTRL ---------------------------
+
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule) {
 
   $scope.allMeals = Meals.all();
+  $scope.currentSchedule = Schedule.all();
+  //$scope.mirror = Meals.mirror;
+
+  $scope.dayOfWeek = 0;
 
   $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
     scope: $scope,
     animation: 'slide-in-up'
-
-
   }).then(function(modal) {
     $scope.modal = modal;
   });
+  $scope.addToSchedule = function(meal) {
+    var thisDay = Schedule.get($scope.dayOfWeek);
+    thisDay.meals.push(meal.id);
+  };
   $scope.createMeal = function(newMeal) {
     console.log('New Meal', newID);
 
@@ -133,6 +152,10 @@ angular.module('starter.controllers', [])
   }
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
+  };
+  $scope.mealName = function(tempID) {
+    var temp = Meals.mirror(tempID);
+    return temp;
   };
   $scope.openModal = function() {
     $scope.modal.show();
