@@ -27,6 +27,8 @@ angular.module('munch.services', [])
     name: 'Another meal name',
     ingredients: []
   }];
+  
+  // var meals = [];
 
   return {
     all: function() {
@@ -107,6 +109,13 @@ angular.module('munch.services', [])
         if (mealQueue[i].dayInt === parseInt(day)) {
           return mealQueue[i];
         }
+      }
+      return null;
+    },
+    clear: function() {
+      for (var i = 0; i < mealQueue.length; i++) {
+        mealQueue[i].meals = [];
+
       }
       return null;
     }

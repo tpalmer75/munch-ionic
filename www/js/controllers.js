@@ -9,23 +9,25 @@ angular.module('starter.controllers', [])
   $scope.data = {
     showDelete: false
   };
+  $scope.deleteButton = "Edit";
 
-  $scope.fakeMeals = [{
-    id: 0,
-    name: 'Noodle Soup',
-    ingredients: ["Noodles", "Water", "Believe"],
-    placeholders: ["Fake", "Fake 2", "Fake 3"]
-  }, {
-    id: 1,
-    name: 'Yoda Soda',
-    ingredients: ["Sprite", "Ice Cream", "The Force"]
-  }, {
-    id: 2,
-    name: "Mario's Mushrooms",
-    ingredients: ["A sweet moustache", "Mushrooms", "Third Item"]
-  }];
+  $scope.showDelete = function() {
+    if ( $scope.meals.length > 0 ) {
+      $scope.data.showDelete = !$scope.data.showDelete;
+      if ($scope.data.showDelete) {
+        $scope.deleteButton = "Done";
+      } else {
+        $scope.deleteButton = "Edit";
+      }
+    }
+  }
 
-  $scope.randomNumber = Math.floor(Math.random() * 3);
+  $scope.deleteMeal = function(idx) {
+    $scope.meals.splice(idx, 1);
+    if ( $scope.meals.length == 0 ) {
+      $scope.data.showDelete = false;
+    }
+  }
 
   $scope.dummyMeal = {};
 
@@ -36,8 +38,6 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
   $scope.createMeal = function(newMeal) {
-    console.log('New Meal', newID);
-
     $scope.allMeals = Meals.all();
     var newID = (Meals.findLast() + 1);
     var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
@@ -54,13 +54,30 @@ angular.module('starter.controllers', [])
     // }
     $scope.dummyMeal.ingredients.splice(item, 1);
     console.log(item);
+
   };
   $scope.openModal = function() {
     $scope.modal.show();
-    $scope.dummyMeal = {
+
+    $scope.fakeMeals = [{
       name: "",
-      ingredients: ["", "", ""]
-    };
+      ingredients: ["", "", ""],
+      placeholderName: "Noodle Soup",
+      placeholders: ["Noodles", "Water", "Believe"]
+    }, {
+      name: "",
+      ingredients: ["", "", ""],
+      placeholderName: "Yoda Soda",
+      placeholders: ["Sprite", "Ice Cream", "The Force"]
+    }, {
+      name: "",
+      ingredients: ["", "", ""],
+      placeholderName: "Mario's Mushrooms",
+      placeholders: ["A sweet moustache", "Mushrooms", "Third Item"]
+    }];
+  
+    var randomNumber = Math.floor(Math.random() * 3);
+    $scope.dummyMeal = $scope.fakeMeals[randomNumber];
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
@@ -68,14 +85,6 @@ angular.module('starter.controllers', [])
 
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
-  });
-
-  $scope.$on('modal.hidden', function() {
-    console.log('hidden');
-  });
-
-  $scope.$on('modal.removed', function() {
-    console.log('removed');
   });
 })
 
@@ -89,16 +98,13 @@ angular.module('starter.controllers', [])
   $scope.addIngredient = function() {
     $scope.meal.ingredients.push("");
   };
-
   $scope.deleteMeal = function() {
     console.log('Delete');
     Meals.delete($stateParams.mealId);
   };
-
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
-
   $scope.showConfirm = function() {
    var confirmPopup = $ionicPopup.confirm({
      title: 'Delete Meal',
@@ -124,13 +130,22 @@ angular.module('starter.controllers', [])
 
 // -------------------------- SCHEDULE CTRL ---------------------------
 
-.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule) {
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, $ionicPopup) {
 
   $scope.allMeals = Meals.all();
   $scope.currentSchedule = Schedule.all();
   //$scope.mirror = Meals.mirror;
 
   $scope.dayOfWeek = 0;
+
+  $scope.data = {
+    showReorder: true
+  };
+
+  $scope.clearAll = function() {
+    Schedule.clear();
+  };
+  
 
   $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
     scope: $scope,
@@ -142,14 +157,6 @@ angular.module('starter.controllers', [])
     var thisDay = Schedule.get($scope.dayOfWeek);
     thisDay.meals.push(meal.id);
   };
-  $scope.createMeal = function(newMeal) {
-    console.log('New Meal', newID);
-
-    $scope.allMeals = Meals.all();
-    var newID = (Meals.findLast() + 1);
-    var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
-    $scope.allMeals.push(newData);
-  }
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
   };
@@ -157,13 +164,54 @@ angular.module('starter.controllers', [])
     var temp = Meals.mirror(tempID);
     return temp;
   };
-  $scope.openModal = function() {
+  $scope.openModal = function(day) {
     $scope.modal.show();
+    $scope.dayOfWeek = day;
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
   };
 
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Clear All',
+     template: 'This will clear out your<br/>entire schedule. You sure?',
+     buttons: [
+      { 
+        text: 'Nope',
+        type: 'button-positive button-clear',
+      },
+      {
+        text: '<b>Yep</b>',
+        type: 'button-positive button-clear',
+        onTap: function() {
+          Schedule.clear();
+        }
+      }
+    ]
+   });
+   };
+
+   $scope.showConfirmRandom = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Random Meals',
+     template: 'This will clear and randomly fill your schedule. You sure?',
+     buttons: [
+      { 
+        text: 'Nope',
+        type: 'button-positive button-clear',
+      },
+      {
+        text: '<b>Yep</b>',
+        type: 'button-positive button-clear',
+        onTap: function() {
+          Schedule.random();
+        }
+      }
+    ]
+   });
+ };
 
 
 })

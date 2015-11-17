@@ -12,7 +12,7 @@
         <h5 class="list-header">Meal Name</h5>
         <div class="list">
             <label class="item item-input">
-                <input type="text" ng-model="dummyMeal.name" placeholder="{{ fakeMeals[randomNumber].name }}">
+                <input type="text" ng-model="dummyMeal.name" placeholder="{{ dummyMeal.placeholderName }}">
             </label>
         </div>
         <h5 class="list-header">Ingredients</h5>
@@ -20,7 +20,7 @@
             <ion-item class="item-remove-animate item-icon-right cu-item-enter-animate" ng-repeat="ingredient in dummyMeal.ingredients track by $index">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
-                    <input type="text" placeholder="Test" ng-model="dummyMeal.ingredients[$index]">
+                    <input type="text" placeholder="{{ dummyMeal.placeholders[$index] }}" ng-model="dummyMeal.ingredients[$index]">
                 </label>
                 <ion-option-button class="button-assertive" ng-click="deleteItem($index);">
                     Delete

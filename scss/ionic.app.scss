@@ -27,8 +27,14 @@ ion-content, .content {
   background: #F2F2F2;
 }
 
-.bar .button.button-clear {
-	font-weight: inherit;
+.bar {
+	.button.button-clear {
+		font-weight: inherit;
+	}
+	.title {
+		font-size: 18px;
+		font-weight: bold;
+	}
 }
 
 .item-delete {
@@ -121,5 +127,23 @@ ion-content, .content {
 			right: 10px;
 			top: -7px;
 		}
+	}
+}
+
+.zero-state {
+	transition: opacity .2s;
+	text-align: center;
+	font-size: 15px;
+	color: #878787;
+	line-height: 24px;
+	&.ng-show {
+		opacity: 1;
+	}
+	&.ng-hide {
+		opacity: 0;
+	}
+	img {
+		width: 264px;
+		margin: 40px 0;
 	}
 }

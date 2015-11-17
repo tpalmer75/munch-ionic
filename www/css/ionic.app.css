@@ -7705,6 +7705,9 @@ ion-content, .content {
 
 .bar .button.button-clear {
   font-weight: inherit; }
+.bar .title {
+  font-size: 18px;
+  font-weight: bold; }
 
 .item-delete .button-icon .icon:before, .item-delete .button-icon.icon:before {
   font-size: 24px; }
@@ -7761,3 +7764,17 @@ ion-content, .content {
     position: absolute;
     right: 10px;
     top: -7px; }
+
+.zero-state {
+  transition: opacity .2s;
+  text-align: center;
+  font-size: 15px;
+  color: #878787;
+  line-height: 24px; }
+  .zero-state.ng-show {
+    opacity: 1; }
+  .zero-state.ng-hide {
+    opacity: 0; }
+  .zero-state img {
+    width: 264px;
+    margin: 40px 0; }
