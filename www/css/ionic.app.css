@@ -7762,8 +7762,9 @@ ion-content, .content {
     font-size: 36px;
     color: #8BC34A;
     position: absolute;
-    right: 10px;
-    top: -7px; }
+    right: 0;
+    top: -5px;
+    padding: 0 10px; }
 
 .zero-state {
   transition: opacity .2s;

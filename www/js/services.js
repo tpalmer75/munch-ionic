@@ -9,23 +9,23 @@ angular.module('munch.services', [])
   }, {
     id: 1,
     name: 'Chicken Pockets',
-    ingredients: []
+    ingredients: ["crescent rolls", "chicken", "onions", "sour cream"]
   }, {
     id: 2,
     name: 'Steak and Berry Salad',
-    ingredients: []
+    ingredients: ["steak", "berries", "lettuce"]
   }, {
     id: 3,
     name: 'Beef Stew',
-    ingredients: []
+    ingredients: ["beef cutlets", "carrots", "potatoes", "broth"]
   }, {
     id: 4,
     name: 'Longer title name that might overflow if the screen is too small',
-    ingredients: []
+    ingredients: ["test"]
   }, {
     id: 5,
     name: 'Another meal name',
-    ingredients: []
+    ingredients: ["test again"]
   }];
   
   // var meals = [];
@@ -64,6 +64,13 @@ angular.module('munch.services', [])
         }
       }
       return null;
+    },
+    mirrorIngredients: function(tempID) { // used for schedule
+      for (var i = 0; i < meals.length; i++) {
+        if (meals[i].id === tempID) {
+          return meals[i].ingredients;
+        }
+      }
     }
   };
 })
@@ -120,4 +127,23 @@ angular.module('munch.services', [])
       return null;
     }
   };
+})
+
+.factory('Groceries', function(Meals) {
+
+  var groceries = [1,2,3];
+
+  return {
+    all: function() {
+      return groceries;
+    },
+    clear: function() {
+      //groceries.splice[0, groceries.length];
+      //groceries = [];
+      for (i = 0; i < groceries.length; i++) {
+        groceries.splice(i, 1); 
+      }
+      console.log('Im trying');
+    }
+  }
 });

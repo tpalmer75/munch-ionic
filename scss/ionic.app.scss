@@ -124,8 +124,9 @@ ion-content, .content {
 			font-size: 36px;
 			color: $balanced;
 			position: absolute;
-			right: 10px;
-			top: -7px;
+			right: 0;
+			top: -5px;
+			padding: 0 10px;
 		}
 	}
 }

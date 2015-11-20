@@ -130,11 +130,11 @@ angular.module('starter.controllers', [])
 
 // -------------------------- SCHEDULE CTRL ---------------------------
 
-.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, $ionicPopup) {
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, Groceries, $ionicPopup) {
 
   $scope.allMeals = Meals.all();
   $scope.currentSchedule = Schedule.all();
-  //$scope.mirror = Meals.mirror;
+  $scope.groceries = Groceries.all();
 
   $scope.dayOfWeek = 0;
 
@@ -144,8 +144,21 @@ angular.module('starter.controllers', [])
 
   $scope.clearAll = function() {
     Schedule.clear();
+    //Groceries.clear();
+    console.log('I tried');
   };
   
+  $scope.setGroceries = function() {
+    for (var a = 0; a < $scope.currentSchedule.length; a++) {
+      for (var b = 0; b < $scope.currentSchedule[a].meals.length; b++) {
+        var items = Meals.mirrorIngredients($scope.currentSchedule[a].meals[b]);
+        for (c = 0; c < items.length; c++) {
+          $scope.groceries.push(items[c]);
+          console.log('set');
+        }
+      }
+    }
+  }
 
   $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
     scope: $scope,
@@ -156,6 +169,8 @@ angular.module('starter.controllers', [])
   $scope.addToSchedule = function(meal) {
     var thisDay = Schedule.get($scope.dayOfWeek);
     thisDay.meals.push(meal.id);
+    //$scope.setGroceries();
+    //$scope.groceries.push(meal.id);
   };
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
@@ -172,6 +187,16 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
   };
 
+  $scope.randomizeSchedule = function() {
+    var max = $scope.allMeals.length;
+    Schedule.clear();
+    for (var i = 0; i < $scope.currentSchedule.length; i++) {
+      var randomNumber = Math.floor(Math.random() * (max));
+      Schedule.get(i).meals.push(randomNumber);
+      //$scope.setGroceries();
+      //$scope.groceries.push(randomNumber);
+    }
+  };
 
   $scope.showConfirm = function() {
    var confirmPopup = $ionicPopup.confirm({
@@ -187,6 +212,8 @@ angular.module('starter.controllers', [])
         type: 'button-positive button-clear',
         onTap: function() {
           Schedule.clear();
+          //Groceries.clear();
+          console.log('I tried');
         }
       }
     ]
@@ -205,19 +232,18 @@ angular.module('starter.controllers', [])
       {
         text: '<b>Yep</b>',
         type: 'button-positive button-clear',
-        onTap: function() {
-          Schedule.random();
+        onTap: function() { 
+          $scope.randomizeSchedule();
         }
       }
     ]
    });
  };
-
-
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('GroceriesCtrl', function($scope, Groceries, Meals) {
+  $scope.meals = Meals.all();
+  $scope.getIngredients = Meals.mirrorIngredients();
+  $scope.groceries = Groceries.all();
+
 });

@@ -69,12 +69,12 @@ angular.module('munchApp', ['ionic', 'starter.controllers', 'munch.services', 'm
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.groceries', {
+    url: '/groceries',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-groceries': {
+        templateUrl: 'templates/tab-groceries.html',
+        controller: 'GroceriesCtrl'
       }
     }
   });
