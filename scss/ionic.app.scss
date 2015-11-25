@@ -77,17 +77,17 @@ ion-content, .content {
 	border-bottom: 1px solid #ddd;
 }
 
-// .cu-item-enter-animate {
-// 	height: auto;
-// 	&.ng-enter {
-// 		height: 0;
-// 		transition: height .15s;
-// 		overflow: hidden;
-// 	}
-// 	&.ng-enter-active {
-// 		height: 47px;
-// 	}
-// }
+.cu-item-enter-animate {
+	height: auto;
+	&.ng-enter {
+		height: 0;
+		transition: height .15s;
+		overflow: hidden;
+	}
+	&.ng-enter-active {
+		height: 47px;
+	}
+}
 
 .popup-container {
 	.popup {
@@ -137,11 +137,9 @@ ion-content, .content {
 	font-size: 15px;
 	color: #878787;
 	line-height: 24px;
-	&.ng-show {
-		opacity: 1;
-	}
 	&.ng-hide {
 		opacity: 0;
+		display: none;
 	}
 	img {
 		width: 264px;

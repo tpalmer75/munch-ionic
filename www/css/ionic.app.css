@@ -7735,6 +7735,15 @@ ion-content, .content {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd; }
 
+.cu-item-enter-animate {
+  height: auto; }
+  .cu-item-enter-animate.ng-enter {
+    height: 0;
+    transition: height .15s;
+    overflow: hidden; }
+  .cu-item-enter-animate.ng-enter-active {
+    height: 47px; }
+
 .popup-container .popup {
   border-radius: 4px;
   text-align: center; }
@@ -7772,10 +7781,9 @@ ion-content, .content {
   font-size: 15px;
   color: #878787;
   line-height: 24px; }
-  .zero-state.ng-show {
-    opacity: 1; }
   .zero-state.ng-hide {
-    opacity: 0; }
+    opacity: 0;
+    display: none; }
   .zero-state img {
     width: 264px;
     margin: 40px 0; }

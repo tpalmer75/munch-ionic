@@ -25,7 +25,8 @@ angular.module('starter.controllers', [])
   $scope.deleteMeal = function(idx) {
     $scope.meals.splice(idx, 1);
     if ( $scope.meals.length == 0 ) {
-      $scope.data.showDelete = false;
+      $scope.deleteButton = "Edit";
+      $scope.showDelete = false;
     }
   }
 
@@ -43,41 +44,47 @@ angular.module('starter.controllers', [])
     var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
     $scope.allMeals.push(newData);
   }
-  $scope.addIngredient = function(newMeal) {
-    $scope.dummyMeal.ingredients.push("");
-  };
-  $scope.deleteItem = function(item) {
-    // var index = $scope.dummyMeal.ingredients.indexOf(item);
-    // if (index !== -1) {
-    //   console.log(index);
-    //   $scope.dummyMeal.ingredients.splice(index, 1);
-    // }
-    $scope.dummyMeal.ingredients.splice(item, 1);
-    console.log(item);
 
+  $scope.addIngredient = function() {
+    var listLength = $scope.dummyMeal.ingredients.length;
+    var newID;
+    if (listLength > 0) {
+      newID = $scope.dummyMeal.ingredients[listLength - 1].id;
+    } else {
+      newID = 1;
+    }
+    var newData = {id: (newID + 1), name: ""};
+    $scope.dummyMeal.ingredients.push(newData);
+    console.log(listLength);
+    console.log(newData);
+  };
+
+
+  $scope.deleteItem = function(item) {
+    delete $scope.dummyMeal.ingredients[item];
   };
   $scope.openModal = function() {
     $scope.modal.show();
 
     $scope.fakeMeals = [{
       name: "",
-      ingredients: ["", "", ""],
+      ingredients: [{id: 0, name: ""}, {id: 1, name: ""}, {id: 2, name: ""}],
       placeholderName: "Noodle Soup",
       placeholders: ["Noodles", "Water", "Believe"]
     }, {
       name: "",
-      ingredients: ["", "", ""],
+      ingredients: [{id: 0, name: ""}, {id: 1, name: ""}, {id: 2, name: ""}],
       placeholderName: "Yoda Soda",
       placeholders: ["Sprite", "Ice Cream", "The Force"]
     }, {
       name: "",
-      ingredients: ["", "", ""],
+      ingredients: [{id: 0, name: ""}, {id: 1, name: ""}, {id: 2, name: ""}],
       placeholderName: "Mario's Mushrooms",
       placeholders: ["A sweet moustache", "Mushrooms", "Third Item"]
     }];
   
     var randomNumber = Math.floor(Math.random() * 3);
-    $scope.dummyMeal = $scope.fakeMeals[randomNumber];
+    $scope.dummyMeal = $scope.fakeMeals[0];
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
@@ -96,6 +103,10 @@ angular.module('starter.controllers', [])
   $scope.allMeals = Meals.all;
 
   $scope.addIngredient = function() {
+
+    var num = Object.keys($scope.meal.ingredients).length;
+
+
     $scope.meal.ingredients.push("");
   };
   $scope.deleteMeal = function() {
@@ -130,11 +141,10 @@ angular.module('starter.controllers', [])
 
 // -------------------------- SCHEDULE CTRL ---------------------------
 
-.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, Groceries, $ionicPopup) {
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, $ionicPopup) {
 
   $scope.allMeals = Meals.all();
   $scope.currentSchedule = Schedule.all();
-  $scope.groceries = Groceries.all();
 
   $scope.dayOfWeek = 0;
 
@@ -144,21 +154,9 @@ angular.module('starter.controllers', [])
 
   $scope.clearAll = function() {
     Schedule.clear();
-    //Groceries.clear();
+    Groceries.clear();
     console.log('I tried');
   };
-  
-  $scope.setGroceries = function() {
-    for (var a = 0; a < $scope.currentSchedule.length; a++) {
-      for (var b = 0; b < $scope.currentSchedule[a].meals.length; b++) {
-        var items = Meals.mirrorIngredients($scope.currentSchedule[a].meals[b]);
-        for (c = 0; c < items.length; c++) {
-          $scope.groceries.push(items[c]);
-          console.log('set');
-        }
-      }
-    }
-  }
 
   $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
     scope: $scope,
@@ -169,8 +167,6 @@ angular.module('starter.controllers', [])
   $scope.addToSchedule = function(meal) {
     var thisDay = Schedule.get($scope.dayOfWeek);
     thisDay.meals.push(meal.id);
-    //$scope.setGroceries();
-    //$scope.groceries.push(meal.id);
   };
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
@@ -193,8 +189,6 @@ angular.module('starter.controllers', [])
     for (var i = 0; i < $scope.currentSchedule.length; i++) {
       var randomNumber = Math.floor(Math.random() * (max));
       Schedule.get(i).meals.push(randomNumber);
-      //$scope.setGroceries();
-      //$scope.groceries.push(randomNumber);
     }
   };
 
@@ -212,8 +206,6 @@ angular.module('starter.controllers', [])
         type: 'button-positive button-clear',
         onTap: function() {
           Schedule.clear();
-          //Groceries.clear();
-          console.log('I tried');
         }
       }
     ]
@@ -241,9 +233,8 @@ angular.module('starter.controllers', [])
  };
 })
 
-.controller('GroceriesCtrl', function($scope, Groceries, Meals) {
+.controller('GroceriesCtrl', function($scope, Meals, Schedule) {
   $scope.meals = Meals.all();
-  $scope.getIngredients = Meals.mirrorIngredients();
-  $scope.groceries = Groceries.all();
+  $scope.currentSchedule = Schedule.all();
 
 });
