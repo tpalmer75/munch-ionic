@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('munch.controllers', [])
 
 // -------------------------- MEAL CTRL ---------------------------
 
@@ -24,9 +24,9 @@ angular.module('starter.controllers', [])
 
   $scope.deleteMeal = function(idx) {
     $scope.meals.splice(idx, 1);
-    if ( $scope.meals.length == 0 ) {
+    if ( !$scope.meals.length ) {
       $scope.deleteButton = "Edit";
-      $scope.showDelete = false;
+      $scope.data.showDelete = false;
     }
   }
 
@@ -51,12 +51,10 @@ angular.module('starter.controllers', [])
     if (listLength > 0) {
       newID = $scope.dummyMeal.ingredients[listLength - 1].id;
     } else {
-      newID = 1;
+      newID = 0;
     }
     var newData = {id: (newID + 1), name: ""};
     $scope.dummyMeal.ingredients.push(newData);
-    console.log(listLength);
-    console.log(newData);
   };
 
 
@@ -104,10 +102,16 @@ angular.module('starter.controllers', [])
 
   $scope.addIngredient = function() {
 
-    var num = Object.keys($scope.meal.ingredients).length;
+    var listLength = $scope.meal.ingredients.length;
+    var newID;
+    if (listLength > 0) {
+      newID = ($scope.meal.ingredients[listLength - 1].id) + 1;
+    } else {
+      newID = 0;
+    }
+    var newData = {id: (newID), name: ""};
+    $scope.meal.ingredients.push(newData);
 
-
-    $scope.meal.ingredients.push("");
   };
   $scope.deleteMeal = function() {
     console.log('Delete');
@@ -141,16 +145,13 @@ angular.module('starter.controllers', [])
 
 // -------------------------- SCHEDULE CTRL ---------------------------
 
-.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, $ionicPopup) {
+.controller('ScheduleCtrl', function($scope, $ionicModal, Meals, Schedule, Groceries, $ionicPopup) {
 
   $scope.allMeals = Meals.all();
   $scope.currentSchedule = Schedule.all();
+  $scope.allGroceries = Groceries.all();
 
   $scope.dayOfWeek = 0;
-
-  $scope.data = {
-    showReorder: true
-  };
 
   $scope.clearAll = function() {
     Schedule.clear();
@@ -164,10 +165,22 @@ angular.module('starter.controllers', [])
   }).then(function(modal) {
     $scope.modal = modal;
   });
+
   $scope.addToSchedule = function(meal) {
     var thisDay = Schedule.get($scope.dayOfWeek);
-    thisDay.meals.push(meal.id);
+    var listLength = thisDay.meals.length;
+    var newID;
+    if (listLength > 0) {
+      newID = (thisDay.meals[listLength - 1].id) + 1;
+    } else {
+      newID = 0;
+    }
+    var newData = {id: newID, name: meal.id};
+    thisDay.meals.push(newData);
+
+    Groceries.generate();
   };
+
   $scope.addIngredient = function(newMeal) {
     $scope.dummyMeal.ingredients.push("");
   };
@@ -188,7 +201,8 @@ angular.module('starter.controllers', [])
     Schedule.clear();
     for (var i = 0; i < $scope.currentSchedule.length; i++) {
       var randomNumber = Math.floor(Math.random() * (max));
-      Schedule.get(i).meals.push(randomNumber);
+      var randomMeal = {id: 0, name: $scope.allMeals[randomNumber].id}
+      Schedule.get(i).meals.push(randomMeal);
     }
   };
 
@@ -233,8 +247,13 @@ angular.module('starter.controllers', [])
  };
 })
 
-.controller('GroceriesCtrl', function($scope, Meals, Schedule) {
-  $scope.meals = Meals.all();
-  $scope.currentSchedule = Schedule.all();
+.controller('GroceriesCtrl', function($scope, Groceries) {
+
+  
+
+  $scope.$on('$ionicView.beforeEnter', function () { 
+    //Code to update view etc... 
+    $scope.groceries = Groceries.all();
+  });
 
 });

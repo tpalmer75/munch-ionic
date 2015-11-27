@@ -6,20 +6,19 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
         <button class="button button-clear" ng-click="openModal()">
-            <i class="icon ion-ios-plus-empty"></i>
+            <i class="icon ion-ios-plus-outline"></i>
         </button>
     </ion-nav-buttons>
     <ion-content>
         <ion-list show-delete="data.showDelete">
-            <ion-item class="item-remove-animate item-icon-right" ng-repeat="meal in meals" href="#/tab/meals/{{meal.id}}">
+            <ion-item class="item-remove-animate item-icon-right" ng-repeat="meal in meals" href="#/tab/meals/{{meal.id}}" ng-click="closeOptionButtons();">
                 <ion-delete-button class="ion-ios-minus" ng-click="deleteMeal($index);">
                 </ion-delete-button>
                 <h2>{{meal.name}}</h2>
                 <i class="icon ion-chevron-right icon-accessory"></i>
                 <ion-option-button class="button-assertive" ng-click="deleteMeal($index);">
-                    Delete
+                    <i class="icon ion-ios-trash-outline"></i>
                 </ion-option-button>
-                <!-- ng-click="meals.splice($index, 1)" -->
             </ion-item>
         </ion-list>
         <div class="zero-state" ng-show="meals.length == 0;">

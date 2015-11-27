@@ -1,16 +1,7 @@
 <ion-view view-title="Groceries">
   <ion-content>
-    <!-- <ion-list>
-      <div ng-repeat="mealID in groceries track by $index">
-        <ion-checkbox ng-repeat="ingredient in meals[mealID].ingredients track by $index">{{ ingredient }}</ion-checkbox>
-      </div>
-    </ion-list> -->
     <ion-list>
-      <div ng-repeat="day in currentSchedule">
-        <div ng-repeat="meal in day.meals">  
-          <ion-checkbox ng-repeat="ingredient in meals[meal].ingredients">{{ ingredient }}</ion-checkbox>
-        </div>
-      </div>
+      <ion-checkbox ng-repeat="ingredient in groceries track by ingredient.id">{{ ingredient.name }}</ion-checkbox>
     </ion-list>
   </ion-content>
 </ion-view>

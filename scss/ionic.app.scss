@@ -71,6 +71,12 @@ ion-content, .content {
 	}
 }
 
+.item-options .button {
+	i {
+
+	}
+}
+
 .button.button-full.button-full-delete {
 	background: #fff;
 	border-top: 1px solid #ddd;
@@ -121,11 +127,11 @@ ion-content, .content {
 		color: #878787;
 		position: relative;
 		.icon {
-			font-size: 36px;
+			font-size: 30px;
 			color: $balanced;
 			position: absolute;
 			right: 0;
-			top: -5px;
+			top: -4px;
 			padding: 0 10px;
 		}
 	}

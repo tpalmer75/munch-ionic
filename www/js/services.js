@@ -5,27 +5,27 @@ angular.module('munch.services', [])
   var meals = [{
     id: 0,
     name: 'Lemon Garlic Chicken',
-    ingredients: {0: "lemon", 1: "garlic", 2: "chicken"}
+    ingredients: [{id: 0, name:"lemon"}, {id: 1, name:"garlic"}, {id: 2, name:"chicken"}, {id: 3, name:"noodles"}]
   }, {
     id: 1,
     name: 'Chicken Pockets',
-    ingredients: ["crescent rolls", "chicken", "onions", "sour cream"]
+    ingredients: [{id: 0, name:"crescent rolls"}, {id: 1, name:"chicken"}, {id: 2, name:"onions"}, {id: 3, name:"sour cream"}]
   }, {
     id: 2,
     name: 'Steak and Berry Salad',
-    ingredients: ["steak", "berries", "lettuce"]
+    ingredients: [{id: 0, name:"steak"}, {id: 1, name:"berries"}, {id: 2, name:"lettuce"}]
   }, {
     id: 3,
     name: 'Beef Stew',
-    ingredients: ["beef cutlets", "carrots", "potatoes", "broth"]
+    ingredients: [{id: 0, name:"beef cutlets"}, {id: 1, name:"carrots"}, {id: 2, name:"potatoes"}, {id: 3, name:"broth"}]
   }, {
     id: 4,
     name: 'Longer title name that might overflow if the screen is too small',
-    ingredients: ["test"]
+    ingredients: [{id: 0, name: "test"}]
   }, {
     id: 5,
     name: 'Another meal name',
-    ingredients: ["test again"]
+    ingredients: [{id: 0, name: "test again"}]
   }];
   
   // var meals = [];
@@ -61,6 +61,14 @@ angular.module('munch.services', [])
       for (var i = 0; i < meals.length; i++) {
         if (meals[i].id === tempID) {
           return meals[i].name;
+        }
+      }
+      return null;
+    },
+    mirrorIngredients: function(tempID) {
+      for (var i = 0; i < meals.length; i++) {
+        if (meals[i].id === tempID) {
+          return meals[i].ingredients;
         }
       }
       return null;
@@ -118,6 +126,46 @@ angular.module('munch.services', [])
 
       }
       return null;
+    }
+  };
+})
+
+.factory('Groceries', function(Meals, Schedule) {
+
+  var groceries = [];
+  var currentSchedule = Schedule.all();
+
+  return {
+    all: function() {
+      return groceries;
+    },
+    generate: function() {
+      groceries = [];
+
+      var newID = 1;
+
+      for (a = 0; a < currentSchedule.length; a++){
+        console.log("starting day " + a);
+        for (b = 0; b < currentSchedule[a].meals.length; b++) {
+
+          var tempID = currentSchedule[a].meals[b].name;
+          var ingredients = Meals.mirrorIngredients(tempID)
+
+          console.log(currentSchedule[a].meals.length + " meals today, meal " + b)
+
+          for (c = 0; c < ingredients.length; c++) {
+
+            var newData = {id: newID, name: ingredients[c].name};
+            groceries.push(newData);
+            newID ++;
+
+            console.log(ingredients.length + " ingredients, adding " + ingredients[c].name)
+
+          }
+          // now you just need to to add unique IDs each time.
+        }
+      }
+      console.log(groceries);
     }
   };
 });

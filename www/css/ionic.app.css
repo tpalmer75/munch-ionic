@@ -7768,11 +7768,11 @@ ion-content, .content {
   color: #878787;
   position: relative; }
   .schedule .list-header .icon {
-    font-size: 36px;
+    font-size: 30px;
     color: #8BC34A;
     position: absolute;
     right: 0;
-    top: -5px;
+    top: -4px;
     padding: 0 10px; }
 
 .zero-state {
