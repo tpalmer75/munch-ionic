@@ -3,7 +3,7 @@ angular.module('munch.controllers', [])
 // -------------------------- MEAL CTRL ---------------------------
 
 
-.controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals) {
+.controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals, $ionicPopup) {
 
   $scope.meals = Meals.all();
   $scope.data = {
@@ -42,8 +42,28 @@ angular.module('munch.controllers', [])
     $scope.allMeals = Meals.all();
     var newID = (Meals.findLast() + 1);
     var newData = {id: newID, name: $scope.dummyMeal.name, ingredients: $scope.dummyMeal.ingredients};
-    $scope.allMeals.push(newData);
+
+    if ( $scope.dummyMeal.name.length > 0) {
+      $scope.allMeals.push(newData);
+      $scope.closeModal();
+    } else {
+      console.log('Nope');
+      $scope.showConfirm();
+    }
   }
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'A meal with no name',
+     template: 'Why would you create a meal </br>with no name?',
+     buttons: [
+      { 
+        text: 'I would never!',
+        type: 'button-positive button-clear',
+      }
+    ]
+   });
+ };
 
   $scope.addIngredient = function() {
     var listLength = $scope.dummyMeal.ingredients.length;
@@ -61,6 +81,7 @@ angular.module('munch.controllers', [])
   $scope.deleteItem = function(item) {
     delete $scope.dummyMeal.ingredients[item];
   };
+
   $scope.openModal = function() {
     $scope.modal.show();
 
@@ -82,11 +103,11 @@ angular.module('munch.controllers', [])
     }];
   
     var randomNumber = Math.floor(Math.random() * 3);
-    $scope.dummyMeal = $scope.fakeMeals[0];
+    $scope.dummyMeal = $scope.fakeMeals[randomNumber];
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
-  };
+  }
 
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
@@ -152,6 +173,7 @@ angular.module('munch.controllers', [])
   $scope.allGroceries = Groceries.all();
 
   $scope.dayOfWeek = 0;
+  $scope.search = '';
 
   $scope.clearAll = function() {
     Schedule.clear();
@@ -178,7 +200,7 @@ angular.module('munch.controllers', [])
     var newData = {id: newID, name: meal.id};
     thisDay.meals.push(newData);
 
-    Groceries.generate();
+    //Groceries.generate();
   };
 
   $scope.addIngredient = function(newMeal) {
@@ -196,6 +218,10 @@ angular.module('munch.controllers', [])
     $scope.modal.hide();
   };
 
+  // $scope.generateGroceries = function() {
+  //   Groceries.generate();
+  // }
+
   $scope.randomizeSchedule = function() {
     var max = $scope.allMeals.length;
     Schedule.clear();
@@ -204,6 +230,7 @@ angular.module('munch.controllers', [])
       var randomMeal = {id: 0, name: $scope.allMeals[randomNumber].id}
       Schedule.get(i).meals.push(randomMeal);
     }
+    //Groceries.generate();
   };
 
   $scope.showConfirm = function() {
@@ -252,7 +279,7 @@ angular.module('munch.controllers', [])
   
 
   $scope.$on('$ionicView.beforeEnter', function () { 
-    //Code to update view etc... 
+    Groceries.generate(); // this has to come first to avoid cache
     $scope.groceries = Groceries.all();
   });
 

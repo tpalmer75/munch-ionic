@@ -145,27 +145,29 @@ angular.module('munch.services', [])
       var newID = 1;
 
       for (a = 0; a < currentSchedule.length; a++){
-        console.log("starting day " + a);
+        //console.log("starting day " + a);
         for (b = 0; b < currentSchedule[a].meals.length; b++) {
 
           var tempID = currentSchedule[a].meals[b].name;
           var ingredients = Meals.mirrorIngredients(tempID)
 
-          console.log(currentSchedule[a].meals.length + " meals today, meal " + b)
+          //console.log(currentSchedule[a].meals.length + " meals today, meal " + b)
 
           for (c = 0; c < ingredients.length; c++) {
-
-            var newData = {id: newID, name: ingredients[c].name};
-            groceries.push(newData);
+            var item = ingredients[c].name;
+            if (item.length > 0) {
+              var newData = {id: newID, name: item};
+              groceries.push(newData);
+            }
             newID ++;
 
-            console.log(ingredients.length + " ingredients, adding " + ingredients[c].name)
+            //console.log(ingredients.length + " ingredients, adding " + ingredients[c].name)
 
           }
           // now you just need to to add unique IDs each time.
         }
       }
-      console.log(groceries);
+      //console.log(groceries);
     }
   };
 });

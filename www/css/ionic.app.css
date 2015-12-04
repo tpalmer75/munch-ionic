@@ -7706,8 +7706,12 @@ ion-content, .content {
 .bar .button.button-clear {
   font-weight: inherit; }
 .bar .title {
-  font-size: 18px;
-  font-weight: bold; }
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+.bar .ion-ios-plus-outline:before {
+  font-size: 26px !important; }
 
 .item-delete .button-icon .icon:before, .item-delete .button-icon.icon:before {
   font-size: 24px; }
@@ -7729,6 +7733,23 @@ ion-content, .content {
   background: #fff; }
 .input-list .add-item .item-content {
   padding: 0; }
+
+.item-input-inset {
+  background: white; }
+  .item-input-inset .icon {
+    font-size: 18px; }
+  .item-input-inset input {
+    width: 100%; }
+
+.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+  background: inherit; }
+
+.item-options .button {
+  padding: 0 10px; }
+  .item-options .button .icon {
+    margin: auto; }
+    .item-options .button .icon:before {
+      font-size: 30px; }
 
 .button.button-full.button-full-delete {
   background: #fff;
@@ -7771,19 +7792,59 @@ ion-content, .content {
     font-size: 30px;
     color: #8BC34A;
     position: absolute;
-    right: 0;
+    right: 4px;
     top: -4px;
     padding: 0 10px; }
+
+.groceries span {
+  display: inline-block;
+  position: relative;
+  padding: 0 5px;
+  left: -5px; }
+  .groceries span:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    position: absolute;
+    top: 11px;
+    left: 0;
+    background: black;
+    transition: width .5s;
+    transform: rotate(-2deg); }
+.groceries .strike span:before {
+  width: 100%; }
 
 .zero-state {
   transition: opacity .2s;
   text-align: center;
   font-size: 15px;
   color: #878787;
-  line-height: 24px; }
+  line-height: 24px;
+  position: relative;
+  transition: all .2s;
+  top: 0; }
   .zero-state.ng-hide {
+    top: 10px;
     opacity: 0;
     display: none; }
   .zero-state img {
     width: 264px;
     margin: 40px 0; }
+
+.cu-icon {
+  background-repeat: no-repeat;
+  background-size: 32px;
+  background-position: center; }
+  .cu-icon.cu-meals {
+    background-image: url('../img/icon-meals.svg'); }
+    .cu-icon.cu-meals.green {
+      background-image: url('../img/icon-meals-green.svg'); }
+  .cu-icon.cu-schedule {
+    background-image: url('../img/icon-schedule.svg'); }
+    .cu-icon.cu-schedule.green {
+      background-image: url('../img/icon-schedule-green.svg'); }
+  .cu-icon.cu-groceries {
+    background-image: url('../img/icon-groceries.svg'); }
+    .cu-icon.cu-groceries.green {
+      background-image: url('../img/icon-groceries-green.svg'); }

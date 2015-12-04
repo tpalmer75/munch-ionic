@@ -5,7 +5,7 @@
         </div>
         <h1 class="title">Create meal</h1>
         <div class="buttons">
-            <button class="button button-clear" ng-click="createMeal(dummyMeal);closeModal();">Save</button>
+            <button class="button button-clear" ng-click="createMeal(dummyMeal);">Save</button>
         </div>
     </div>
     <ion-content class="has-header">
@@ -20,7 +20,7 @@
             <ion-item class="item-remove-animate item-icon-right cu-item-enter-animate" ng-repeat="ingredient in dummyMeal.ingredients track by ingredient.id">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
-                    <input type="text" placeholder="{{ dummyMeal.placeholders[$index] }}" value="{{ ingredient.name }}">
+                    <input type="text" placeholder="{{ dummyMeal.placeholders[$index] }}" ng-model="ingredient.name">
                 </label>
                 <ion-option-button class="button-assertive" ng-click="dummyMeal.ingredients.splice($index, 1);">
                     <i class="icon ion-ios-trash-outline"></i>

@@ -1,7 +1,13 @@
 <ion-view view-title="Groceries">
-  <ion-content>
-    <ion-list>
-      <ion-checkbox ng-repeat="ingredient in groceries track by ingredient.id">{{ ingredient.name }}</ion-checkbox>
-    </ion-list>
+  <ion-content class="groceries">
+    <ul class="list">
+      <li class="item item-checkbox"
+          ng-repeat="ingredient in groceries | orderBy: 'name' | unique: 'name' track by ingredient.id" ng-class="{strike: checked}">
+        <label class="checkbox checkbox-balanced" ng-click="checked = !checked;">
+          <input type="checkbox">
+        </label>
+        <span>{{ ingredient.name }}</span>
+      </li>
+    </ul>
   </ion-content>
 </ion-view>
