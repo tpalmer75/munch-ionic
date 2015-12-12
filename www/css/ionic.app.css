@@ -7735,9 +7735,15 @@ ion-content, .content {
   padding: 0; }
 
 .item-input-inset {
-  background: white; }
+  background: #709D3B; }
+  .item-input-inset input {
+    background: #709D3B;
+    color: white; }
+    .item-input-inset input::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
   .item-input-inset .icon {
-    font-size: 18px; }
+    font-size: 18px;
+    color: white; }
   .item-input-inset input {
     width: 100%; }
 
@@ -7784,7 +7790,7 @@ ion-content, .content {
 
 .schedule .list {
   background: white;
-  min-height: 30px; }
+  min-height: 50px; }
 .schedule .list-header {
   color: #878787;
   position: relative; }
@@ -7823,18 +7829,19 @@ ion-content, .content {
   line-height: 24px;
   position: relative;
   transition: all .2s;
-  top: 0; }
+  top: 0;
+  padding: 40px 0; }
   .zero-state.ng-hide {
     top: 10px;
     opacity: 0;
     display: none; }
   .zero-state img {
     width: 264px;
-    margin: 40px 0; }
+    margin-bottom: 40px; }
 
 .cu-icon {
   background-repeat: no-repeat;
-  background-size: 32px;
+  background-size: 34px;
   background-position: center; }
   .cu-icon.cu-meals {
     background-image: url('../img/icon-meals.svg'); }

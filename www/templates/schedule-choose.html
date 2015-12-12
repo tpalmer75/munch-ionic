@@ -1,31 +1,26 @@
 <ion-modal-view>
-    <!-- <div class="bar bar-header bar-balanced">
-        <div class="buttons">
-            <button class="button button-clear" ng-click="closeModal();">Cancel</button>
-        </div>
-        <h1 class="title">Choose a meal</h1>
-    </div> -->
     <div class="bar bar-header bar-balanced">
-        <div class="buttons">
+        <div class="buttons" style="padding-right: 10px">
             <button class="button button-clear" ng-click="closeModal();">Cancel</button>
         </div>
-            <label class="item-input-wrapper item-input-inset">
-                <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="search" placeholder="Search meals and ingredients" ng-model="search">
-            </label>
+        <label class="item-input-wrapper item-input-inset">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search meals and ingredients" ng-model="search">
+        </label>
     </div>
     <ion-content class="has-header">
-        <!-- <div class="item-input-inset">
-            <label class="item-input-wrapper">
-                <i class="icon ion-ios-search placeholder-icon"></i>
-                <input type="search" placeholder="Search meals and ingredients" ng-model="search">
-            </label>
-        </div> -->
         <ion-list>
-            <ion-item ng-repeat="meal in allMeals | filter: testSearch track by meal.id" ng-click="addToSchedule(meal); closeModal(); search = '';">
+            <ion-item ng-repeat="meal in filteredMeals = (allMeals | filter: search) track by meal.id" ng-click="addToSchedule(meal); closeModal(); search = '';">
                 <h2>{{ meal.name }}</h2>
             </ion-item>
         </ion-list>
+        <div class="zero-state" ng-show="!filteredMeals.length && allMeals.length > 0">Nothing here called "{{search}}"</div>
+        <div class="zero-state" ng-show="allMeals.length == 0;">
+            <div class="messaging">Yeah... there's nothing here.
+            </br>
+            </br>You should probably create a meal
+            </br>over on the "Meals" tab.
+            </div>
+        </div>
     </ion-content>
-    </ion-view>
 </ion-modal-view>

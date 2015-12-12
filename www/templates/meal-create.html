@@ -20,7 +20,7 @@
             <ion-item class="item-remove-animate item-icon-right cu-item-enter-animate" ng-repeat="ingredient in dummyMeal.ingredients track by ingredient.id">
                 <i open-options class="ion-ios-minus assertive static-delete"></i>
                 <label close-options class="item item-input">
-                    <input type="text" placeholder="{{ dummyMeal.placeholders[$index] }}" ng-model="ingredient.name">
+                    <input type="text" placeholder="{{ dummyMeal.placeholders[$index] }}" ng-model="ingredient.name" set-focus="$last" first-time="firstTime">
                 </label>
                 <ion-option-button class="button-assertive" ng-click="dummyMeal.ingredients.splice($index, 1);">
                     <i class="icon ion-ios-trash-outline"></i>

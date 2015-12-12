@@ -77,9 +77,17 @@ ion-content, .content {
 }
 
 .item-input-inset {
-	background: white;
+	background: #709D3B;
+	input {
+		background: #709D3B;
+		color: white;
+		&::-webkit-input-placeholder {
+			color: rgba(255,255,255,.5);
+		}
+	}
 	.icon {
 		font-size: 18px;
+		color: white;
 	}
 	input {
 		width: 100%;
@@ -144,7 +152,8 @@ ion-content, .content {
 .schedule {
 	.list {
 		background: white;
-		min-height: 30px;
+		min-height: 50px;
+
 	}
 	.list-header {
 		color: #878787;
@@ -195,6 +204,7 @@ ion-content, .content {
 	position: relative;
 	transition: all .2s;
 	top: 0;
+	padding: 40px 0;
 	&.ng-hide {
 		top: 10px;
 		opacity: 0;
@@ -202,13 +212,13 @@ ion-content, .content {
 	}
 	img {
 		width: 264px;
-		margin: 40px 0;
+		margin-bottom: 40px;
 	}
 }
 
 .cu-icon {
 	background-repeat: no-repeat;
-	background-size: 32px;
+	background-size: 34px;
 	background-position: center;
 	&.cu-meals {
 		background-image: url('../img/icon-meals.svg');

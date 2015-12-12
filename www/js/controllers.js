@@ -3,13 +3,17 @@ angular.module('munch.controllers', [])
 // -------------------------- MEAL CTRL ---------------------------
 
 
-.controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals, $ionicPopup) {
+.controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals, Schedule, $ionicPopup) {
 
   $scope.meals = Meals.all();
   $scope.data = {
     showDelete: false
   };
+  var currentSchedule = Schedule.all();
+
   $scope.deleteButton = "Edit";
+
+  $scope.firstTime = {justLoaded : true};
 
   $scope.showDelete = function() {
     if ( $scope.meals.length > 0 ) {
@@ -23,11 +27,28 @@ angular.module('munch.controllers', [])
   }
 
   $scope.deleteMeal = function(idx) {
+
+    // check for the meal in schedule
+    var thisMeal = $scope.meals[idx].id;
+
+    for (a=0; a < currentSchedule.length; a++) {
+      var mealsToday = currentSchedule[a].meals;
+      for (b=0; b < mealsToday.length; b++) {
+        var mealOnSchedule = mealsToday[b].name;
+        if (mealOnSchedule == thisMeal) {
+          var place = mealsToday.indexOf(mealOnSchedule);
+          mealsToday.splice(place, 1);
+        }
+      }
+    }
+
     $scope.meals.splice(idx, 1);
+
     if ( !$scope.meals.length ) {
       $scope.deleteButton = "Edit";
       $scope.data.showDelete = false;
     }
+    
   }
 
   $scope.dummyMeal = {};
@@ -120,6 +141,8 @@ angular.module('munch.controllers', [])
   
   $scope.meal = Meals.get($stateParams.mealId);
   $scope.allMeals = Meals.all;
+
+  $scope.firstTime = {justLoaded : true};
 
   $scope.addIngredient = function() {
 

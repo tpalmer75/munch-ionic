@@ -5,6 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+
+// angular.module('munchApp', ['ionic', 'munch.controllers', 'munch.services', 'munch.directives', 'munch.filters', 'ngAnimate', 'ngIOS9UIWebViewPatch', 'firebase'])
 angular.module('munchApp', ['ionic', 'munch.controllers', 'munch.services', 'munch.directives', 'munch.filters', 'ngAnimate', 'ngIOS9UIWebViewPatch'])
 
 .run(function($ionicPlatform) {

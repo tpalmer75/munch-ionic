@@ -9,5 +9,12 @@
         <span>{{ ingredient.name }}</span>
       </li>
     </ul>
+    <div class="zero-state" ng-show="groceries.length == 0;">
+            <div class="messaging">No groceries!
+            </br>
+            </br>Looks like you haven't added
+            </br>anything to your schedule.
+            </div>
+        </div>
   </ion-content>
 </ion-view>

@@ -1,5 +1,57 @@
 angular.module('munch.services', [])
 
+// .factory('Meals', function($firebaseArray) {
+
+//   var meals = new Firebase("https://glaring-heat-6999.firebaseapp.com/meals")
+  
+//   // var meals = [];
+
+//   return {
+//     all: function() {
+//       return $firebaseArray(meals);
+//     },
+//     get: function(mealId) {
+//       for (var i = 0; i < meals.length; i++) {
+//         if (meals[i].id === parseInt(mealId)) {
+//           return meals[i];
+//         }
+//       }
+//       return null;
+//     },
+//     findLast: function() {
+//       var listLength = meals.length;
+//       if (listLength > 0) {
+//         return meals[listLength - 1].id;
+//       } else {
+//         return 1;
+//       }
+//     },
+//     delete: function(mealId) {
+//       for (var i = 0; i < meals.length; i++) {
+//         if (meals[i].id === parseInt(mealId)) {
+//           meals.splice(i, 1);
+//         }
+//       }
+//     }, 
+//     mirror: function(tempID) { // used for schedule
+//       for (var i = 0; i < meals.length; i++) {
+//         if (meals[i].id === tempID) {
+//           return meals[i].name;
+//         }
+//       }
+//       return null;
+//     },
+//     mirrorIngredients: function(tempID) {
+//       for (var i = 0; i < meals.length; i++) {
+//         if (meals[i].id === tempID) {
+//           return meals[i].ingredients;
+//         }
+//       }
+//       return null;
+//     }
+//   };
+// })
+
 .factory('Meals', function() {
 
   var meals = [{
