@@ -1,7 +1,7 @@
 <ion-view view-title="Schedule">
     <ion-nav-buttons side="left">
         <button class="button button-clear" ng-click="showConfirm();">
-            Clear All
+            Clear all
         </button>
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
@@ -15,7 +15,7 @@
         <ion-list>
             <ion-item class="item-remove-animate" ng-repeat="meal in day.meals track by meal.id">
             <h2>{{ mealName(meal.name); }}</h2>
-            <ion-option-button class="button-assertive" ng-click="day.meals.splice($index, 1);">
+            <ion-option-button class="button-assertive" ng-click="day.meals.splice($index, 1);removeGroceries(meal.name);">
                 <i class="icon ion-ios-trash-outline"></i>
             </ion-option-button>
             </ion-item>

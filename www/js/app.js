@@ -8,7 +8,7 @@
 
 
 //angular.module('munchApp', ['ionic', 'munch.controllers', 'munch.services', 'munch.directives', 'munch.filters', 'ngAnimate', 'ngIOS9UIWebViewPatch', 'firebase'])
-angular.module('munchApp', ['ionic', 'munch.controllers', 'munch.services', 'munch.directives', 'munch.filters', 'ngAnimate', 'ngIOS9UIWebViewPatch'])
+angular.module('munchApp', ['ionic', 'munch.controllers', 'munch.services', 'munch.directives', 'ngAnimate', 'ngIOS9UIWebViewPatch'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
