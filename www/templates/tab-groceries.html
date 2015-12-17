@@ -3,10 +3,10 @@
     <ul class="list">
       <li class="item item-checkbox"
           ng-repeat="ingredient in groceries | orderBy: 'name' | unique: 'name' track by ingredient.id" ng-class="{strike: checked}">
-        <label class="checkbox checkbox-balanced" ng-click="checked = !checked;">
+        <label class="checkbox checkbox-balanced" ng-click="ingredient.checked=!ingredient.checked" checked="ingredient.checked">
           <input type="checkbox">
         </label>
-        <span>{{ ingredient.name }}</span>
+        <span>{{ ingredient.name }} {{ingredient}}</span>
       </li>
     </ul>
     <div class="zero-state" ng-show="groceries.length == 0;">

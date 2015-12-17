@@ -128,26 +128,37 @@ ion-content, .content {
 
 .popup-container {
 	.popup {
-		border-radius: 4px;
-    	text-align: center;
-    }
-    .popup-buttons {
-    	min-height: initial;
-  		padding: 0;
-  		button:before {
-  			display: block;
-  			width: 1px;
-  			height: 100%;
-  			background: #eee;
-  			position: absolute;
-  			top: 0;
-  			right: 0;
-  		}
-    }
-    .popup-body {
-    	padding: 20px 0;
-    }
+		text-align: center;
+		button {
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+	}
 }
+// .popup-container {
+// 	.popup {
+// 		border-radius: 4px;
+//     	text-align: center;
+//     }
+//     .popup-buttons {
+//     	min-height: initial;
+//   		padding: 0;
+//   		button:before {
+//   			display: block;
+//   			width: 1px;
+//   			height: 100%;
+//   			background: #eee;
+//   			position: absolute;
+//   			top: 0;
+//   			right: 0;
+//   		}
+//     }
+//     .popup-body {
+//     	padding: 20px 0;
+//     }
+// }
 
 .schedule {
 	.list {

@@ -2,7 +2,7 @@ angular.module('munch.services', [])
 
 // .factory('Meals', function($firebaseArray) {
 
-//   var meals = new Firebase("https://glaring-heat-6999.firebaseapp.com/meals")
+//   var meals = new Firebase("https://munch-ionic.firebaseio.com/");
   
 //   // var meals = [];
 
@@ -191,35 +191,47 @@ angular.module('munch.services', [])
     all: function() {
       return groceries;
     },
-    generate: function() {
-      groceries = [];
-
-      var newID = 1;
-
+    add: function() {
+      console.log(groceries);
+      //groceries = [];
+      console.log('starting');
+      if (groceries.length) {
+        var newID = (groceries[groceries.length - 1].id) + 1;
+      } else {
+        newID = 1;
+      }
+      // loop through each day
       for (a = 0; a < currentSchedule.length; a++){
-        //console.log("starting day " + a);
+        // loop through each meal
         for (b = 0; b < currentSchedule[a].meals.length; b++) {
-
           var tempID = currentSchedule[a].meals[b].name;
           var ingredients = Meals.mirrorIngredients(tempID)
-
-          //console.log(currentSchedule[a].meals.length + " meals today, meal " + b)
-
+          // loop through each ingredient
           for (c = 0; c < ingredients.length; c++) {
-            var item = ingredients[c].name;
-            if (item.length > 0) {
-              var newData = {id: newID, name: item};
-              groceries.push(newData);
+            var item = ingredients[c].name; 
+            console.log('made it to C');
+            console.log(item);
+            
+            var hasDuplicate = false;
+            for (d = 0; d < groceries.length; d++) {
+              if ( item === groceries[d].name ) {
+                hasDuplicate = true;
+                groceries[d].count ++;
+              }
             }
-            newID ++;
-
-            //console.log(ingredients.length + " ingredients, adding " + ingredients[c].name)
-
+            if (hasDuplicate == false) {
+              var newData = {id: newID, name: item, checked: false, count: 1};
+              console.log("just pushed: " + item);
+              groceries.push(newData);
+              newID ++;
+            } else {
+            }
           }
-          // now you just need to to add unique IDs each time.
         }
       }
-      //console.log(groceries);
+    },
+    remove: function() {
+      return;
     }
   };
 });

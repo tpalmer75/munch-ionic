@@ -6,14 +6,14 @@ angular.module('munch.controllers', [])
 .controller('MealsCtrl', function($scope, $ionicModal, $stateParams, Meals, Schedule, $ionicPopup) {
 
   $scope.meals = Meals.all();
+  $scope.dummyMeal = {};
   $scope.data = {
     showDelete: false
   };
-  var currentSchedule = Schedule.all();
-
   $scope.deleteButton = "Edit";
-
   $scope.firstTime = {justLoaded : true};
+
+  var currentSchedule = Schedule.all();
 
   $scope.showDelete = function() {
     if ( $scope.meals.length > 0 ) {
@@ -24,13 +24,10 @@ angular.module('munch.controllers', [])
         $scope.deleteButton = "Edit";
       }
     }
-  }
-
+  };
   $scope.deleteMeal = function(idx) {
-
     // check for the meal in schedule
     var thisMeal = $scope.meals[idx].id;
-
     for (a=0; a < currentSchedule.length; a++) {
       var mealsToday = currentSchedule[a].meals;
       for (b=0; b < mealsToday.length; b++) {
@@ -41,18 +38,15 @@ angular.module('munch.controllers', [])
         }
       }
     }
-
+    // delete the meal
     $scope.meals.splice(idx, 1);
 
+    // change the delete button text
     if ( !$scope.meals.length ) {
       $scope.deleteButton = "Edit";
       $scope.data.showDelete = false;
-    }
-    
-  }
-
-  $scope.dummyMeal = {};
-
+    }  
+  };
   $ionicModal.fromTemplateUrl('templates/meal-create.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -68,19 +62,17 @@ angular.module('munch.controllers', [])
       $scope.allMeals.push(newData);
       $scope.closeModal();
     } else {
-      console.log('Nope');
       $scope.showConfirm();
     }
-  }
-
+  };
   $scope.showConfirm = function() {
    var confirmPopup = $ionicPopup.confirm({
-     title: 'A meal with no name',
-     template: 'Why would you create a meal </br>with no name?',
+     title: 'Oops.',
+     template: 'Looks like this meal</br>needs a name.',
      buttons: [
       { 
-        text: 'I would never!',
-        type: 'button-positive button-clear',
+        text: 'Sure does',
+        type: 'button-balanced button-clear',
       }
     ]
    });
@@ -158,7 +150,6 @@ angular.module('munch.controllers', [])
 
   };
   $scope.deleteMeal = function() {
-    console.log('Delete');
     Meals.delete($stateParams.mealId);
   };
   $scope.goBack = function() {
@@ -171,11 +162,11 @@ angular.module('munch.controllers', [])
      buttons: [
       { 
         text: 'Nope',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
       },
       {
         text: '<b>Yep</b>',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
         onTap: function() {
           $scope.deleteMeal();
           $ionicHistory.goBack();
@@ -201,7 +192,6 @@ angular.module('munch.controllers', [])
   $scope.clearAll = function() {
     Schedule.clear();
     Groceries.clear();
-    console.log('I tried');
   };
 
   $ionicModal.fromTemplateUrl('templates/schedule-choose.html', {
@@ -223,7 +213,7 @@ angular.module('munch.controllers', [])
     var newData = {id: newID, name: meal.id};
     thisDay.meals.push(newData);
 
-    //Groceries.generate();
+    //Groceries.add();
   };
 
   $scope.addIngredient = function(newMeal) {
@@ -241,8 +231,8 @@ angular.module('munch.controllers', [])
     $scope.modal.hide();
   };
 
-  // $scope.generateGroceries = function() {
-  //   Groceries.generate();
+  // $scope.addGroceries = function() {
+  //   Groceries.add();
   // }
 
   $scope.randomizeSchedule = function() {
@@ -253,7 +243,7 @@ angular.module('munch.controllers', [])
       var randomMeal = {id: 0, name: $scope.allMeals[randomNumber].id}
       Schedule.get(i).meals.push(randomMeal);
     }
-    //Groceries.generate();
+    //Groceries.add();
   };
 
   $scope.showConfirm = function() {
@@ -263,11 +253,11 @@ angular.module('munch.controllers', [])
      buttons: [
       { 
         text: 'Nope',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
       },
       {
         text: '<b>Yep</b>',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
         onTap: function() {
           Schedule.clear();
         }
@@ -283,11 +273,11 @@ angular.module('munch.controllers', [])
      buttons: [
       { 
         text: 'Nope',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
       },
       {
         text: '<b>Yep</b>',
-        type: 'button-positive button-clear',
+        type: 'button-balanced button-clear',
         onTap: function() { 
           $scope.randomizeSchedule();
         }
@@ -302,7 +292,7 @@ angular.module('munch.controllers', [])
   
 
   $scope.$on('$ionicView.beforeEnter', function () { 
-    Groceries.generate(); // this has to come first to avoid cache
+    Groceries.add(); // this has to come first to avoid cache
     $scope.groceries = Groceries.all();
   });
 
