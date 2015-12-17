@@ -1,14 +1,20 @@
 <ion-view view-title="Groceries">
+  <ion-nav-buttons side="left">
+        <button class="button button-clear" ng-click="uncheckAll();">
+            Clear all
+        </button>
+    </ion-nav-buttons>
   <ion-content class="groceries">
-    <ul class="list">
-      <li class="item item-checkbox"
-          ng-repeat="ingredient in groceries | orderBy: 'name' | unique: 'name' track by ingredient.id" ng-class="{strike: checked}">
-        <label class="checkbox checkbox-balanced" ng-click="ingredient.checked=!ingredient.checked" checked="ingredient.checked">
-          <input type="checkbox">
-        </label>
-        <span>{{ ingredient.name }} {{ingredient}}</span>
-      </li>
-    </ul>
+    <div class="list">
+      <ion-checkbox
+          ng-repeat="ingredient in groceries | orderBy: 'name' track by ingredient.id" 
+          ng-class="{strike: checked}" 
+          class="checkbox-balanced"
+          ng-model="ingredient.checked" 
+          ng-checked="ingredient.checked">
+          {{ ingredient.name }} {{ingredient}}
+      </ion-checkbox>
+    </div>
     <div class="zero-state" ng-show="groceries.length == 0;">
             <div class="messaging">No groceries!
             </br>

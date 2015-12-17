@@ -182,55 +182,75 @@ angular.module('munch.services', [])
   };
 })
 
-.factory('Groceries', function(Meals, Schedule) {
+.factory('Groceries', function(Meals) {
 
   var groceries = [];
-  var currentSchedule = Schedule.all();
 
   return {
     all: function() {
       return groceries;
     },
-    add: function() {
-      console.log(groceries);
-      //groceries = [];
-      console.log('starting');
+    add: function(mealID) {
+
       if (groceries.length) {
         var newID = (groceries[groceries.length - 1].id) + 1;
       } else {
         newID = 1;
       }
-      // loop through each day
-      for (a = 0; a < currentSchedule.length; a++){
-        // loop through each meal
-        for (b = 0; b < currentSchedule[a].meals.length; b++) {
-          var tempID = currentSchedule[a].meals[b].name;
-          var ingredients = Meals.mirrorIngredients(tempID)
-          // loop through each ingredient
-          for (c = 0; c < ingredients.length; c++) {
-            var item = ingredients[c].name; 
-            console.log('made it to C');
-            console.log(item);
-            
-            var hasDuplicate = false;
-            for (d = 0; d < groceries.length; d++) {
-              if ( item === groceries[d].name ) {
-                hasDuplicate = true;
-                groceries[d].count ++;
-              }
-            }
-            if (hasDuplicate == false) {
-              var newData = {id: newID, name: item, checked: false, count: 1};
-              console.log("just pushed: " + item);
-              groceries.push(newData);
-              newID ++;
-            } else {
+
+      var ingredients = Meals.mirrorIngredients(mealID)
+      // loop through ingredients
+      for (c = 0; c < ingredients.length; c++) {
+        var item = ingredients[c].name; 
+
+        var hasDuplicate = false;
+        // loop through existing groceries
+        for (d = 0; d < groceries.length; d++) {
+          // check for duplicates
+          if ( item === groceries[d].name ) {
+            hasDuplicate = true;
+            groceries[d].count ++;
+          }
+        }
+        // if it's not a duplicate
+        if (hasDuplicate == false) {
+          var newData = {id: newID, name: item, checked: false, count: 1};
+          groceries.push(newData);
+          newID ++;
+        }
+      }
+      return;
+    },
+    remove: function(mealID) {
+
+      var ingredients = Meals.mirrorIngredients(mealID)
+      // loop through ingredients
+      for (c = 0; c < ingredients.length; c++) {
+        var item = ingredients[c].name; 
+
+        var hasDuplicate = false;
+        // loop through existing groceries
+        for (d = 0; d < groceries.length; d++) {
+          // check for duplicates
+          if ( item === groceries[d].name ) {
+            groceries[d].count --;
+            if (groceries[d].count == 0) {
+              groceries.splice(d, 1);
             }
           }
         }
       }
+      return;
     },
-    remove: function() {
+    clear: function() {
+      groceries = [];
+    },
+    uncheckAll: function() {
+      for (i = 0; i < groceries.length; i++) {
+        console.log(groceries[i].checked);
+        groceries[i].checked = false;
+        console.log(groceries[i].checked);
+      }
       return;
     }
   };
