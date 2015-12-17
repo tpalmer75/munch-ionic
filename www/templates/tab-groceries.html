@@ -7,7 +7,12 @@
   <ion-content class="groceries">
     <div class="list">
       <ion-checkbox
-          ng-repeat="ingredient in groceries | orderBy: 'name' track by ingredient.id" ng-class="{strike: checked}" class="checkbox checkbox-balanced" ng-click="ingredient.checked=!ingredient.checked" ng-model="ingredient.checked" ng-checked="ingredient.check">{{ ingredient.name }} {{ingredient}}
+          ng-repeat="ingredient in groceries | orderBy: 'name' track by ingredient.id" 
+          ng-class="{strike: checked}" 
+          class="checkbox-balanced"
+          ng-model="ingredient.checked" 
+          ng-checked="ingredient.checked">
+          {{ ingredient.name }} {{ingredient}}
       </ion-checkbox>
     </div>
     <div class="zero-state" ng-show="groceries.length == 0;">
