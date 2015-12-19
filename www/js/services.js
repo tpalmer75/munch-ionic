@@ -213,7 +213,7 @@ angular.module('munch.services', [])
           }
         }
         // if it's not a duplicate
-        if (hasDuplicate == false) {
+        if (hasDuplicate == false && item.length) {
           var newData = {id: newID, name: item, checked: false, count: 1};
           groceries.push(newData);
           newID ++;
@@ -223,7 +223,7 @@ angular.module('munch.services', [])
     },
     remove: function(mealID) {
 
-      var ingredients = Meals.mirrorIngredients(mealID)
+      var ingredients = Meals.mirrorIngredients(mealID);
       // loop through ingredients
       for (c = 0; c < ingredients.length; c++) {
         var item = ingredients[c].name; 
